@@ -7,225 +7,422 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --red:    #FA2458;
+      --yellow: #FED278;
+      --white:  #ffffff;
+      --dark:   #1a1a1a;
+      --gray:   #f4f4f4;
+      --border: #e8e8e8;
+      --text:   #333333;
+      --muted:  #888888;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f5f5f0;
+      background: var(--white);
       display: flex;
       flex-direction: column;
       height: 100dvh;
+      color: var(--text);
     }
 
+    /* ── TELA DE LOGIN ── */
+    #login-screen {
+      position: fixed; inset: 0;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; z-index: 200;
+    }
+
+    .login-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px 32px;
+      max-width: 380px; width: 100%;
+      box-shadow: 0 8px 40px rgba(250,36,88,.12);
+      text-align: center;
+    }
+
+    .login-logo {
+      height: 64px;
+      margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .login-logo img {
+      max-height: 64px; max-width: 200px;
+      object-fit: contain;
+    }
+
+    .login-logo-fallback {
+      font-size: 28px; font-weight: 800;
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+    }
+
+    .login-card h2 {
+      font-size: 20px; font-weight: 700; margin-bottom: 6px; color: var(--dark);
+    }
+
+    .login-card p {
+      font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.5;
+    }
+
+    .login-card input {
+      width: 100%;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 16px;
+      text-align: center;
+      letter-spacing: 3px;
+      outline: none;
+      transition: border-color .2s;
+      color: var(--dark);
+    }
+    .login-card input:focus { border-color: var(--red); }
+
+    .login-card input.error { border-color: var(--red); animation: shake .3s; }
+    @keyframes shake {
+      0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)}
+    }
+
+    .login-error {
+      font-size: 13px; color: var(--red); margin-top: 8px;
+      min-height: 18px; font-weight: 500;
+    }
+
+    .login-btn {
+      width: 100%; margin-top: 16px;
+      background: var(--red); color: var(--white); border: none;
+      border-radius: 12px; padding: 14px;
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      transition: opacity .15s, transform .1s;
+    }
+    .login-btn:hover  { opacity: .9; }
+    .login-btn:active { transform: scale(.98); }
+
+    .login-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+    /* ── SETUP DE ADMIN (chave API) ── */
+    #setup-screen {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.5);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; z-index: 300;
+    }
+
+    .setup-card {
+      background: var(--white); border-radius: 16px;
+      padding: 32px 28px; max-width: 400px; width: 100%;
+      box-shadow: 0 8px 32px rgba(0,0,0,.2);
+    }
+
+    .setup-card h3 { font-size: 17px; margin-bottom: 8px; color: var(--dark); }
+    .setup-card p  { font-size: 13px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
+    .setup-card p a { color: var(--red); }
+
+    .setup-card input {
+      width: 100%; border: 1px solid var(--border); border-radius: 10px;
+      padding: 12px 14px; font-size: 14px; outline: none; margin-bottom: 12px;
+    }
+    .setup-card input:focus { border-color: var(--red); }
+
+    .setup-btn {
+      width: 100%; background: var(--dark); color: var(--white); border: none;
+      border-radius: 10px; padding: 13px;
+      font-size: 15px; font-weight: 600; cursor: pointer;
+    }
+
+    /* ── HEADER ── */
     header {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex; align-items: center; gap: 12px;
     }
 
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #d4a843, #e8c87a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: bold;
-      color: #1a1a1a;
-      flex-shrink: 0;
+    .header-logo {
+      height: 36px;
+      display: flex; align-items: center;
+    }
+    .header-logo img {
+      max-height: 36px; max-width: 120px; object-fit: contain;
+    }
+    .header-logo-fallback {
+      font-size: 18px; font-weight: 800;
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    .header-info h1 { font-size: 16px; font-weight: 600; }
-    .header-info p  { font-size: 12px; color: #aaa; margin-top: 2px; }
-
-    .online-dot {
-      width: 8px; height: 8px;
-      background: #4caf50;
-      border-radius: 50%;
-      margin-left: auto;
-      flex-shrink: 0;
+    .header-divider {
+      width: 1px; height: 28px; background: var(--border); flex-shrink: 0;
     }
 
+    .bot-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: var(--white); flex-shrink: 0;
+    }
+
+    .header-info { flex: 1; }
+    .header-info h1 { font-size: 15px; font-weight: 700; color: var(--dark); }
+    .header-info p  { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+    .online-badge {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 12px; color: #22c55e; font-weight: 500;
+    }
+    .online-badge::before {
+      content: ''; width: 7px; height: 7px;
+      background: #22c55e; border-radius: 50%;
+    }
+
+    /* ── CHAT ── */
     #chat {
-      flex: 1;
-      overflow-y: auto;
+      flex: 1; overflow-y: auto;
       padding: 20px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      display: flex; flex-direction: column; gap: 14px;
+      background: var(--white);
     }
 
     .msg {
-      display: flex;
-      gap: 8px;
-      max-width: 82%;
-      animation: fadeIn 0.2s ease;
+      display: flex; gap: 8px;
+      max-width: 80%;
+      animation: fadeUp .2s ease;
     }
-
-    @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
 
     .msg.user { align-self: flex-end; flex-direction: row-reverse; }
     .msg.bot  { align-self: flex-start; }
 
     .bubble {
       padding: 10px 14px;
-      border-radius: 16px;
+      border-radius: 18px;
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
-    .msg.bot  .bubble { background:#fff; color:#1a1a1a; border-top-left-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
-    .msg.user .bubble { background:#1a1a1a; color:#fff; border-top-right-radius:4px; }
-
-    .mini-avatar {
-      width:28px; height:28px; border-radius:50%;
-      background: linear-gradient(135deg,#d4a843,#e8c87a);
-      display:flex; align-items:center; justify-content:center;
-      font-size:12px; font-weight:bold; color:#1a1a1a;
-      flex-shrink:0; margin-top:2px;
+    .msg.bot  .bubble {
+      background: var(--gray);
+      color: var(--dark);
+      border-top-left-radius: 4px;
     }
 
-    .typing { display:flex; gap:4px; padding:10px 14px; }
-    .typing span {
-      width:7px; height:7px; border-radius:50%; background:#bbb;
-      animation: bounce 1.2s infinite;
+    .msg.user .bubble {
+      background: var(--red);
+      color: var(--white);
+      border-top-right-radius: 4px;
     }
-    .typing span:nth-child(2) { animation-delay:.2s; }
-    .typing span:nth-child(3) { animation-delay:.4s; }
-    @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
 
-    .quick-replies {
-      display:flex; flex-wrap:wrap; gap:8px;
+    .msg-avatar {
+      width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: var(--white);
+    }
+
+    /* typing */
+    .typing-dots { display:flex; gap:5px; padding: 12px 16px; }
+    .typing-dots span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #ccc; animation: bounce 1.2s infinite;
+    }
+    .typing-dots span:nth-child(2){animation-delay:.2s}
+    .typing-dots span:nth-child(3){animation-delay:.4s}
+    @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}}
+
+    /* ── QUICK REPLIES ── */
+    .quick-wrap {
       padding: 0 16px 10px;
+      display: flex; flex-wrap: wrap; gap: 8px;
     }
-    .quick-replies button {
-      background:#fff; border:1px solid #ddd; border-radius:20px;
-      padding:6px 14px; font-size:13px; cursor:pointer; color:#1a1a1a;
-      transition:background .15s,border-color .15s;
-    }
-    .quick-replies button:hover { background:#1a1a1a; color:#fff; border-color:#1a1a1a; }
 
+    .quick-btn {
+      border: 1.5px solid var(--border);
+      background: var(--white); color: var(--dark);
+      border-radius: 20px; padding: 7px 15px;
+      font-size: 13px; cursor: pointer;
+      transition: all .15s;
+    }
+    .quick-btn:hover {
+      border-color: var(--red); color: var(--red);
+      background: rgba(250,36,88,.05);
+    }
+
+    /* ── INPUT ── */
     form {
-      display:flex; padding:12px 16px; gap:8px;
-      background:#fff; border-top:1px solid #e8e8e8;
+      display: flex; gap: 8px; padding: 12px 16px;
+      background: var(--white); border-top: 1px solid var(--border);
     }
 
     #input {
-      flex:1; border:1px solid #ddd; border-radius:24px;
-      padding:10px 16px; font-size:14px; outline:none;
-      resize:none; line-height:1.4; max-height:120px;
-      font-family:inherit;
+      flex: 1; border: 1.5px solid var(--border); border-radius: 24px;
+      padding: 10px 16px; font-size: 14px; outline: none;
+      resize: none; max-height: 120px; line-height: 1.4;
+      font-family: inherit; transition: border-color .2s;
     }
-    #input:focus { border-color:#1a1a1a; }
+    #input:focus { border-color: var(--red); }
 
-    button[type="submit"] {
-      background:#1a1a1a; color:#fff; border:none; border-radius:50%;
-      width:42px; height:42px; cursor:pointer;
-      display:flex; align-items:center; justify-content:center;
-      flex-shrink:0; align-self:flex-end; transition:background .15s;
+    #send-btn {
+      background: var(--red); color: var(--white); border: none;
+      border-radius: 50%; width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; align-self: flex-end;
+      transition: opacity .15s;
     }
-    button[type="submit"]:hover    { background:#333; }
-    button[type="submit"]:disabled { background:#ccc; cursor:not-allowed; }
-    button[type="submit"] svg { width:18px; height:18px; }
+    #send-btn:hover    { opacity: .85; }
+    #send-btn:disabled { background: #ccc; cursor: not-allowed; }
+    #send-btn svg { width: 17px; height: 17px; }
 
-    /* tela de configuração */
-    #setup-screen {
-      position:fixed; inset:0; background:#f5f5f0;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      padding:24px; z-index:100;
+    /* ── USER CHIP (canto) ── */
+    .user-chip {
+      position: absolute; top: 12px; right: 16px;
+      font-size: 12px; color: var(--muted);
     }
-    #setup-screen .card {
-      background:#fff; border-radius:16px;
-      padding:32px 28px; max-width:400px; width:100%;
-      box-shadow:0 4px 20px rgba(0,0,0,.1);
-      text-align:center;
-    }
-    #setup-screen .logo {
-      width:56px; height:56px; border-radius:50%;
-      background:linear-gradient(135deg,#d4a843,#e8c87a);
-      display:flex; align-items:center; justify-content:center;
-      font-size:24px; font-weight:bold; color:#1a1a1a;
-      margin:0 auto 16px;
-    }
-    #setup-screen h2 { font-size:20px; margin-bottom:6px; }
-    #setup-screen p  { font-size:13px; color:#666; margin-bottom:20px; line-height:1.5; }
-    #setup-screen input {
-      width:100%; border:1px solid #ddd; border-radius:10px;
-      padding:12px 14px; font-size:14px; outline:none; margin-bottom:12px;
-    }
-    #setup-screen input:focus { border-color:#1a1a1a; }
-    #setup-screen button {
-      width:100%; background:#1a1a1a; color:#fff; border:none;
-      border-radius:10px; padding:13px; font-size:15px;
-      font-weight:600; cursor:pointer;
-    }
-    #setup-screen .hint {
-      font-size:12px; color:#999; margin-top:14px; line-height:1.6;
-    }
-    #setup-screen .hint a { color:#1a1a1a; }
+
+    header { position: relative; }
   </style>
 </head>
 <body>
 
-<!-- Tela de configuração (aparece só na primeira vez) -->
-<div id="setup-screen">
-  <div class="card">
-    <div class="logo">A</div>
-    <h2>Bem-vindo, Ana</h2>
-    <p>Para ativar a assistente, insira a chave da API do Google (Gemini). Ela fica salva só no seu navegador.</p>
-    <input type="password" id="key-input" placeholder="Cole sua chave aqui..." autocomplete="off" />
-    <button onclick="saveKey()">Ativar assistente</button>
-    <p class="hint">
-      Não tem chave? Acesse <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a>,
-      clique em <strong>Create API Key</strong> e cole aqui.<br>É gratuito.
-    </p>
+<!-- SETUP DE ADMIN (primeiro acesso) -->
+<div id="setup-screen" style="display:none">
+  <div class="setup-card">
+    <h3>⚙️ Configuração inicial</h3>
+    <p>Insira a chave da API Gemini (Google). Ela fica salva neste navegador e não fica visível aos colaboradores.<br>
+    Obtenha gratuitamente em <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></p>
+    <input type="password" id="api-key-input" placeholder="Cole a chave aqui..." />
+    <button class="setup-btn" onclick="saveApiKey()">Salvar e continuar</button>
   </div>
 </div>
 
+<!-- TELA DE LOGIN POR MATRÍCULA -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo" id="login-logo">
+      <img src="SELO.png" alt="Sucré" onerror="this.parentElement.innerHTML='<span class=\'login-logo-fallback\'>Sucré</span>'" />
+    </div>
+    <h2>Olá! Sou a Ana 👋</h2>
+    <p>Digite sua matrícula para acessar o assistente de RH da Sucré</p>
+    <input type="text" id="matricula-input" placeholder="Ex: 661 ou PJ14"
+           maxlength="10" autocomplete="off"
+           onkeydown="if(event.key==='Enter') doLogin()" />
+    <div class="login-error" id="login-error"></div>
+    <button class="login-btn" onclick="doLogin()">Entrar</button>
+  </div>
+</div>
+
+<!-- HEADER -->
 <header>
-  <div class="avatar">A</div>
+  <div class="header-logo" id="header-logo">
+    <img src="SELO.png" alt="Sucré" onerror="this.parentElement.innerHTML='<span class=\'header-logo-fallback\'>Sucré</span>'" />
+  </div>
+  <div class="header-divider"></div>
+  <div class="bot-avatar">A</div>
   <div class="header-info">
     <h1>Ana</h1>
-    <p>Assistente de RH · Sucré Alimentos</p>
+    <p id="header-sub">Assistente de RH</p>
   </div>
-  <div class="online-dot"></div>
+  <div class="online-badge">Online</div>
 </header>
 
+<!-- MENSAGENS -->
 <div id="chat"></div>
 
-<div class="quick-replies" id="quick-replies">
-  <button onclick="sendQuick('Quando recebo meu salário?')">💰 Salário</button>
-  <button onclick="sendQuick('Como funciona o vale alimentação?')">🍽️ Vale Alimentação</button>
-  <button onclick="sendQuick('Como ajustar o ponto?')">⏱️ Ponto</button>
-  <button onclick="sendQuick('Quais licenças tenho direito?')">📋 Licenças</button>
-  <button onclick="sendQuick('Como funciona o plano de saúde?')">🏥 Plano de Saúde</button>
-  <button onclick="sendQuick('Como solicitar férias?')">🌴 Férias</button>
+<!-- ATALHOS -->
+<div class="quick-wrap" id="quick-wrap">
+  <button class="quick-btn" onclick="sendQuick('Quando recebo meu salário?')">💰 Salário</button>
+  <button class="quick-btn" onclick="sendQuick('Como funciona o vale alimentação?')">🍽️ Vale Alimentação</button>
+  <button class="quick-btn" onclick="sendQuick('Como ajustar o ponto?')">⏱️ Ajustar Ponto</button>
+  <button class="quick-btn" onclick="sendQuick('Como lançar atestado no ponto?')">📋 Atestado</button>
+  <button class="quick-btn" onclick="sendQuick('Quais licenças tenho direito?')">🗓️ Licenças</button>
+  <button class="quick-btn" onclick="sendQuick('Como funciona o plano de saúde?')">🏥 Plano de Saúde</button>
+  <button class="quick-btn" onclick="sendQuick('Como funciona o banco de horas?')">⏳ Banco de Horas</button>
+  <button class="quick-btn" onclick="sendQuick('Como solicitar férias?')">🌴 Férias</button>
 </div>
 
+<!-- INPUT -->
 <form id="form">
   <textarea id="input" placeholder="Escreva sua dúvida..." rows="1"></textarea>
-  <button type="submit" id="send-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <button type="submit" id="send-btn" disabled>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
     </svg>
   </button>
 </form>
 
 <script>
-const SYSTEM_PROMPT = `Você é a Ana, assistente virtual da Sucré Alimentos, especializada em dúvidas de RH e benefícios para colaboradores internos.
+// ── BASE DE COLABORADORES ──────────────────────────────────────────────────
+const COLABORADORES = {
+  "661":"BIANCA DO NASCIMENTO DINIZ","676":"MARIA CLARA GIRAO DA SILVA",
+  "657":"ANA CAROLINE SAMPAIO SILVESTRE","230":"INACIA ALINE ALVES DE LIMA",
+  "669":"CAROLINE BATISTA ANDRADE","671":"ERIKA THAMIRES DE OLIVEIRA SANTOS",
+  "173":"ANTONIA MARIA BARBOSA FARIAS","643":"MYCALL DE OLIVEIRA ALVES",
+  "658":"ANTONIA VANESSA SOUSA BARBOSA BATISTA","598":"LARA HELEN VIDAL ARAUJO",
+  "646":"ANTONIA MARCIANE ALVES DA SILVA","328":"ANTONIO MARCOS OLIVEIRA DO NASCIMENTO",
+  "666":"ANTONIO SANDRO MOURA GARCIA","660":"CAIO ENDEL MACIEL DA COSTA MELO",
+  "667":"RAIANNE MAIRA CRUZ DO NASCIMENTO","PJ14":"LUANA MAYRA PESSOA",
+  "593":"NIQUERLIS ROCHELLE DE SOUZA SILVA","555":"CLAUDIANA DE OLIVEIRA SILVA",
+  "547":"CICERA CARLA DE OLIVEIRA RODRIGUES","597":"RONALD ESTENIO DA SILVA BEZERRA",
+  "293":"DAIANE NASCIMENTO DE SOUSA","PJ22":"FRANCISCO RODRIGO VERAS RODRIGUES",
+  "599":"MARIA CLEONICE CECILIO GONZAGA","526":"CLEITON SILVA DE SOUZA",
+  "610":"FRANCISCO CESAR RODRIGUES SOUSA SANTOS","651":"FABIO VIEIRA VASCONCELOS",
+  "PJ24":"KEDMA CYDIA DA SILVA FELIX","PJ25":"GLAUBERTO LADERLAC RIBEIRO LOURENCO",
+  "PJ26":"CANDIDO MEDEIROS LINHARES","363":"KAHENA SENA HOLANDA",
+  "664":"SULAMITA NOGUEIRA SILVA","638":"FRANCISCA SOARES BARBOSA",
+  "613":"FRANCISCA ELANE MARTINS DE SOUZA","624":"ISRAEL ALVES LEITE",
+  "524":"FRANCISCO ANTONIO DE ALMEIDA","485":"MARIA GLEICIANE CAETANO",
+  "633":"CICERO JONAS GONCALVES LIMA","675":"FRANCISCO VALDINAR SOARES TEIXEIRA",
+  "494":"FRANCISCO CARLOS DO NASCIMENTO","530":"FRANCISCO GOMES MOURA",
+  "618":"ITALO DAVID ALMEIDA MATOS","668":"SAMYRA FERREIRA DE SOUSA",
+  "615":"LUCYNARA FERNANDES PEREIRA","175":"ROZELIA DE FREITAS SOUSA DE ANDRADE",
+  "674":"LARICE ALCANTARA DA SILVA","122":"DANIELLA GONCALVES DO CARMO",
+  "617":"MARIA RAFAELLY MOURA DE AMORIM VASCONCELOS","419":"JEAN LIMA DE OLIVEIRA",
+  "648":"JOSE LOPES DOS SANTOS JUNIOR","673":"JOSE NILTON DE OLIVEIRA ARRUDA",
+  "585":"NATALIA EVANGELISTA BRAZ","579":"ANTONIA CHEILANE DOS SANTOS",
+  "441":"RENATA ARAUJO SOTERO BORGES","636":"RENAN LUCAS BRUNO ALMEIDA",
+  "642":"JOSEMAR SANTOS DE PAIVA","637":"EMANUELE CRISTINA PEREIRA DE ALMEIDA",
+  "17":"FABIO MELO","558":"LUCILENE COSTA DE SOUSA",
+  "546":"TAINA PAMELA LOBO MENDES","1":"LIA VIEIRA QUINDERE",
+  "188":"MARIA DA GLORIA NUNES DE SOUZA","445":"FRANCISCA GRAZIELE NUNES DA SILVA DE SOUZA",
+  "297":"ROSINEIDE ALVES DA SILVA","580":"SIMARA ANDRE MATOS",
+  "640":"RAFAEL DA SILVA DUARTE","653":"RAFAEL DA SILVA FERREIRA",
+  "PJ03":"LIDIANE DE MELO SILVA","522":"REGIVALDO FERREIRA DA SILVA",
+  "605":"JOYCIANE DE SOUZA SANTIAGO","294":"LEONARDO RAIMUNDO DA SILVA",
+  "525":"SEBASTIAO FELIX DOS SANTOS JUNIOR","145":"ANA PAULA DA SILVA FERNANDES",
+  "264":"TRACYANE SILVA DE LIMA","645":"ELISABETH SALGADO DO NASCIMENTO",
+  "659":"RAFAEL RIBEIRO","249":"JOSE TARCISIO COELHO",
+  "665":"GISLANIA SOARES FERREIRA","316":"MARIA DIANA AGUIAR VIANA",
+  "663":"MARIA VANIA ASSIS DE SOUSA","461":"ISMAEL MARQUES DA SILVA",
+  "270":"ANTONIA KIANY BRAZ DE FREITAS","670":"ALISANDRA DOS SANTOS SILVA",
+  "PJ21":"JULIA SILVA DOS SANTOS","662":"TAMIRES KELIANE DE SOUSA MUNIZ",
+  "632":"MAIRTON DAS CHAGAS DE OLIVEIRA","302":"FRANCISCO VALDIR CORDEIRO DA SILVA",
+  "641":"HEITOR DE CARVALHO FERREIRA","469":"JOANE RIBEIRO BARRETO",
+  "426":"MICHAEL DOUGLAS OLIVEIRA DO NASCIMENTO","672":"ERIKSON BRUNO MENEZES DE MOURA",
+  "635":"MARIA GABRIELA DA SILVA OLIVEIRA","604":"MARDRISSON COSTA FREITAS",
+  "440":"ELENICE LIMA DA SILVA PESSOTI","573":"RONALDO DO NASCIMENTO MARQUES",
+  "150":"SAMIA MARA SAMPAIO DE MORAIS","647":"LUNA KETLEY FERREIRA DE OLIVEIRA",
+  "PJ12":"VANESSA LOUREIRO BENIGNO","607":"FRANCISCO BEZERRA GOMES",
+  "253":"VALDENIZA MARIA LOPES RABELO","562":"ANTONIA DE OLIVEIRA GOMES",
+  "528":"ERIDON DE MATOS GOMES","557":"MARIA LIDUINA DO NASCIMENTO MOURA",
+  "510":"STHEFANY MIKELLY VIEIRA PORTELA","29":"FRANCISCO JOSE RODRIGUES DE SOUSA FILHO",
+  "678":"JADE SILVA DO NASCIMENTO","627":"LAIS HADASSA BATISTA CAVALCANTE",
+  "PJ23":"PEDRO FLAVIO FILOMENO JUNIOR","427":"EVILENE PEREIRA SOUZA"
+};
 
-Responda sempre em português, de forma amigável, clara e objetiva.
-Quando não souber a resposta ou a dúvida for muito específica, oriente o colaborador a contatar o setor de Gente e Gestão pelo e-mail genteegestao@sucre.com.br.
+// ── SISTEMA PROMPT ────────────────────────────────────────────────────────
+const SYSTEM_PROMPT = `Você é a Ana, assistente virtual de RH da Sucré Alimentos.
+Responda em português, de forma amigável, clara e objetiva.
+Quando não souber a resposta, oriente a contatar: genteegestao@sucre.com.br.
 
 BASE DE CONHECIMENTO – SUCRÉ ALIMENTOS
 
 VALE ALIMENTAÇÃO
-- Valor: R$ 20,00 por dia efetivamente trabalhado, 100% custeado pela empresa
+- Valor: R$20,00 por dia efetivamente trabalhado, 100% custeado pela empresa
 - Crédito: até o 5º dia útil de cada mês
 - Cartão de propriedade do colaborador (não precisa devolver ao sair)
 - Faltas (justificadas ou não) são descontadas na recarga do mês seguinte
@@ -239,28 +436,24 @@ TRANSPORTE – METRÔ
 - Empresa paga o valor do metrô mediante comprovação e assinatura de termo
 
 MOBILIDADE (Reembolso de KM)
-- Antecipação e reembolso de KM conforme política interna
+- Antecipação e reembolso de KM conforme política interna; dúvidas: genteegestao@sucre.com.br
 
 AUXÍLIO COMBUSTÍVEL
-- R$ 250,00/mês: quem NÃO mora em Maracanaú, distância > 8 km
-- R$ 150,00/mês: quem mora em Maracanaú, distância > 8 km
+- R$250,00/mês: quem NÃO mora em Maracanaú e tem distância > 8 km
+- R$150,00/mês: quem mora em Maracanaú/adjacências e tem distância > 8 km
 
 PLANO DE SAÚDE
 - Operadoras: Unimed – Essencial Max ou Hapvida – Nosso Plano
-- Empresa custeia 50% para o colaborador
-- Inclusão de dependentes (filhos/cônjuge): colaborador paga 100% do adicional
-- Disponível após 90 dias de vínculo
+- Empresa custeia 50% para o colaborador; dependentes (filhos/cônjuge): colaborador paga 100% do adicional
+- Disponível após 90 dias de vínculo; upgrade: consultar Gente e Gestão
 
 PLANO ODONTOLÓGICO
 - Operadoras: Clin e Odontoart
-- Empresa custeia 50% para o colaborador
-- Inclusão de dependentes permitida (colaborador paga 100% do adicional)
+- Empresa custeia 50% para o colaborador; dependentes permitidos (colaborador paga 100% do adicional)
 
 DESCONTO EM PRODUTOS SUCRÉ
-- 20% de desconto
-- Desconto em folha após 90 dias (limite R$ 200,00/mês; R$ 100,00 para quem tem consignado)
-- Pedidos: WhatsApp (85) 99862-0284, seg/ter/sex das 8h30 às 16h30
-- Retirada: quinta-feira até 16h no estoque/logística
+- 20% de desconto; em folha após 90 dias (limite R$200/mês; R$100 para quem tem consignado)
+- Pedidos: WhatsApp (85) 99862-0284, seg/ter/sex 8h30–16h30; retirada quinta até 16h no estoque
 
 SALÁRIO E PAGAMENTOS
 - Adiantamento: 40% no dia 20 de cada mês (quando dia útil)
@@ -268,152 +461,183 @@ SALÁRIO E PAGAMENTOS
 - Pagamento via Banco do Brasil (conta salário)
 
 FÉRIAS
-- Concedidas conforme conveniência da empresa, respeitando a CLT
-- Podem ser fracionadas em até 3 períodos
-- Impacto de faltas não justificadas: até 5 faltas = 30 dias | 6-14 = 24 dias | 15-23 = 18 dias | 24-32 = 12 dias
+- Concedidas conforme conveniência da empresa, respeitando CLT; podem ser fracionadas em até 3 períodos
+- Impacto de faltas não justificadas: até 5 = 30 dias | 6–14 = 24 dias | 15–23 = 18 dias | 24–32 = 12 dias
 
 LICENÇAS
-- Falecimento (pai, mãe, irmão, cônjuge, avós): 2 dias consecutivos
-- Casamento civil: 3 dias consecutivos
+- Falecimento (pai, mãe, irmão, cônjuge, avós): 2 dias
+- Casamento civil: 3 dias
 - Paternidade estendida: 20 dias
 - Maternidade estendida: 180 dias
-- Demais casos: consultar Art. 473 da CLT
+- Outros casos: Art. 473 da CLT
 
 PONTO ELETRÔNICO
-- Registrar ponto: no intervalo, no retorno e no término da jornada
-- Ajuste de ponto: comunicar ao gestor e ao DP, solicitar correção no sistema
-- Tolerância: até 10 minutos
-- Atestados: enviar foto ao DP e gestor em até 48h; original só quando solicitado
-- Declaração médica: abona 4 horas (restante da jornada = falta parcial)
-- Banco de horas: compensação em até 2 meses; horas não compensadas viram horas extras pagas
-- Horas extras: somente com autorização prévia do gestor; proibido durante intervalo
+- Registrar: no início do intervalo, no retorno e no término da jornada
+- Ajuste: comunicar ao gestor e ao DP, solicitar correção no sistema; tolerância: 10 minutos
+- Atestado: enviar foto ao DP e gestor em até 48h; original só se solicitado
+- Declaração médica: abona 4 horas (restante = falta parcial)
+- Banco de horas: compensação em até 2 meses; se não compensadas, viram horas extras pagas
+- Horas extras: somente com autorização prévia do gestor; proibido no intervalo
 
-CONTATO GENTE E GESTÃO
-- E-mail: genteegestao@sucre.com.br
+CONTATO
+- Gente e Gestão: genteegestao@sucre.com.br
 - Ouvidoria (confidencial): https://app.feedz.com.br/ouvidoria
 
-Responda somente sobre os temas acima. Para outros assuntos, oriente a contactar genteegestao@sucre.com.br.`;
+Responda somente sobre temas de RH/benefícios da Sucré. Para outros assuntos, direcione ao e-mail acima.`;
 
-  const setupScreen = document.getElementById('setup-screen');
-  const chat        = document.getElementById('chat');
-  const form        = document.getElementById('form');
-  const input       = document.getElementById('input');
-  const sendBtn     = document.getElementById('send-btn');
-  const quickReplies= document.getElementById('quick-replies');
+// ── ESTADO ───────────────────────────────────────────────────────────────
+const chat       = document.getElementById('chat');
+const form       = document.getElementById('form');
+const inputEl    = document.getElementById('input');
+const sendBtn    = document.getElementById('send-btn');
+const quickWrap  = document.getElementById('quick-wrap');
 
-  let history = [];
+let history      = [];
+let currentUser  = null;
 
-  // Verifica se já tem chave salva
-  const savedKey = localStorage.getItem('gemini_key');
-  if (savedKey) setupScreen.style.display = 'none';
+// ── INICIALIZAÇÃO ─────────────────────────────────────────────────────────
+(function init() {
+  const hasKey = !!localStorage.getItem('_gak');
+  if (!hasKey) {
+    document.getElementById('setup-screen').style.display = 'flex';
+    document.getElementById('login-screen').style.display = 'none';
+  }
+})();
 
-  function saveKey() {
-    const key = document.getElementById('key-input').value.trim();
-    if (!key) { alert('Cole a chave antes de continuar.'); return; }
-    localStorage.setItem('gemini_key', key);
-    setupScreen.style.display = 'none';
-    showWelcome();
+function saveApiKey() {
+  const k = document.getElementById('api-key-input').value.trim();
+  if (!k) return;
+  localStorage.setItem('_gak', k);
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+}
+
+// ── LOGIN POR MATRÍCULA ───────────────────────────────────────────────────
+function doLogin() {
+  const raw = document.getElementById('matricula-input').value.trim().toUpperCase();
+  const errEl = document.getElementById('login-error');
+  const inpEl = document.getElementById('matricula-input');
+
+  if (!raw) { errEl.textContent = 'Digite sua matrícula.'; inpEl.classList.add('error'); return; }
+
+  // Aceita tanto "14" quanto "PJ14"
+  const chave = COLABORADORES[raw] ? raw : (COLABORADORES['PJ' + raw] ? 'PJ' + raw : null);
+  const nome  = chave ? COLABORADORES[chave] : null;
+
+  if (!nome) {
+    errEl.textContent = 'Matrícula não encontrada. Verifique e tente novamente.';
+    inpEl.classList.add('error');
+    setTimeout(() => inpEl.classList.remove('error'), 600);
+    return;
   }
 
-  function showWelcome() {
-    setTimeout(() => {
-      addMessage('bot', 'Olá! Sou a Ana, sua assistente de RH da Sucré. 😊\n\nEstou aqui para ajudar com dúvidas sobre benefícios, ponto eletrônico, férias, licenças e pagamentos.\n\nComo posso te ajudar hoje?');
-    }, 300);
-  }
+  currentUser = { matricula: chave, nome };
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('header-sub').textContent = `Assistente de RH · Matrícula ${chave}`;
+  sendBtn.disabled = false;
 
-  if (savedKey) showWelcome();
+  const primeiroNome = nome.split(' ')[0];
+  primeiroNome_capitalizado = primeiroNome.charAt(0) + primeiroNome.slice(1).toLowerCase();
 
-  function addMessage(role, text) {
-    const div = document.createElement('div');
-    div.className = `msg ${role}`;
-    if (role === 'bot') {
-      div.innerHTML = `<div class="mini-avatar">A</div><div class="bubble">${escapeHtml(text)}</div>`;
-    } else {
-      div.innerHTML = `<div class="bubble">${escapeHtml(text)}</div>`;
-    }
-    chat.appendChild(div);
-    chat.scrollTop = chat.scrollHeight;
-  }
+  addBotMsg(`Olá, ${primeiroNome_capitalizado}! 😊\n\nSou a Ana, sua assistente de RH da Sucré. Estou aqui para ajudar com dúvidas sobre benefícios, ponto, férias, licenças e pagamentos.\n\nComo posso te ajudar hoje?`);
+}
 
-  function showTyping() {
-    const div = document.createElement('div');
-    div.className = 'msg bot'; div.id = 'typing';
-    div.innerHTML = `<div class="mini-avatar">A</div><div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
-    chat.appendChild(div);
-    chat.scrollTop = chat.scrollHeight;
-  }
+// ── MENSAGENS ─────────────────────────────────────────────────────────────
+function addBotMsg(text) {
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  div.innerHTML = `<div class="msg-avatar">A</div><div class="bubble">${esc(text)}</div>`;
+  chat.appendChild(div);
+  scroll();
+}
 
-  function removeTyping() {
-    const t = document.getElementById('typing');
-    if (t) t.remove();
-  }
+function addUserMsg(text) {
+  const div = document.createElement('div');
+  div.className = 'msg user';
+  div.innerHTML = `<div class="bubble">${esc(text)}</div>`;
+  chat.appendChild(div);
+  scroll();
+}
 
-  function escapeHtml(t) {
-    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-  }
+function showTyping() {
+  const div = document.createElement('div');
+  div.className = 'msg bot'; div.id = 'typing';
+  div.innerHTML = `<div class="msg-avatar">A</div><div class="bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+  chat.appendChild(div); scroll();
+}
+function removeTyping() { document.getElementById('typing')?.remove(); }
 
-  async function sendMessage(text) {
-    if (!text.trim()) return;
-    const key = localStorage.getItem('gemini_key');
-    if (!key) { setupScreen.style.display = 'flex'; return; }
+function scroll() { chat.scrollTop = chat.scrollHeight; }
 
-    quickReplies.style.display = 'none';
-    addMessage('user', text);
-    history.push({ role: 'user', parts: [{ text }] });
+function esc(t) {
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
 
-    input.value = ''; input.style.height = 'auto';
-    sendBtn.disabled = true;
-    showTyping();
+// ── ENVIO ─────────────────────────────────────────────────────────────────
+async function sendMessage(text) {
+  if (!text.trim() || !currentUser) return;
 
-    const body = {
-      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents: history,
-      generationConfig: { maxOutputTokens: 1024, temperature: 0.4 }
-    };
+  const key = localStorage.getItem('_gak');
+  if (!key) { document.getElementById('setup-screen').style.display = 'flex'; return; }
 
-    try {
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
-        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
-      );
-      const data = await res.json();
-      removeTyping();
+  quickWrap.style.display = 'none';
+  addUserMsg(text);
+  history.push({ role: 'user', parts: [{ text }] });
 
-      if (!res.ok) {
-        const err = data.error?.message || 'Erro desconhecido';
-        if (err.includes('API_KEY')) {
-          localStorage.removeItem('gemini_key');
-          addMessage('bot', 'Chave de API inválida. Recarregue a página e insira uma chave válida.');
-        } else {
-          addMessage('bot', `Erro: ${err}`);
-        }
-        sendBtn.disabled = false; return;
+  inputEl.value = ''; inputEl.style.height = 'auto';
+  sendBtn.disabled = true;
+  showTyping();
+
+  const body = {
+    system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+    contents: history,
+    generationConfig: { maxOutputTokens: 1024, temperature: 0.4 }
+  };
+
+  try {
+    const res  = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
+      { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) }
+    );
+    const data = await res.json();
+    removeTyping();
+
+    if (!res.ok) {
+      const msg = data.error?.message || '';
+      if (msg.includes('API_KEY') || msg.includes('key')) {
+        localStorage.removeItem('_gak');
+        addBotMsg('Chave de API expirada ou inválida. Fale com o administrador para atualizar a chave.');
+      } else {
+        addBotMsg(`Ocorreu um erro: ${msg || 'tente novamente.'}`);
       }
-
-      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Não consegui processar. Tente novamente.';
-      addMessage('bot', reply);
-      history.push({ role: 'model', parts: [{ text: reply }] });
-    } catch {
-      removeTyping();
-      addMessage('bot', 'Não consegui me conectar. Verifique sua conexão e tente novamente.');
+      sendBtn.disabled = false; return;
     }
 
-    sendBtn.disabled = false;
-    input.focus();
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text
+                  || 'Não consegui processar. Por favor, tente novamente.';
+    addBotMsg(reply);
+    history.push({ role:'model', parts:[{ text: reply }] });
+  } catch {
+    removeTyping();
+    addBotMsg('Não consegui me conectar. Verifique sua conexão e tente novamente.');
   }
 
-  function sendQuick(text) { sendMessage(text); }
+  sendBtn.disabled = false;
+  inputEl.focus();
+}
 
-  form.addEventListener('submit', e => { e.preventDefault(); sendMessage(input.value); });
+function sendQuick(t) { sendMessage(t); }
 
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(input.value); }
-  });
+form.addEventListener('submit', e => { e.preventDefault(); sendMessage(inputEl.value); });
 
-  input.addEventListener('input', () => {
-    input.style.height = 'auto';
-    input.style.height = Math.min(input.scrollHeight, 120) + 'px';
-  });
+inputEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(inputEl.value); }
+});
+
+inputEl.addEventListener('input', () => {
+  inputEl.style.height = 'auto';
+  inputEl.style.height = Math.min(inputEl.scrollHeight, 120) + 'px';
+});
 </script>
 </body>
 </html>
