@@ -293,8 +293,8 @@
 <div id="setup-screen" style="display:none">
   <div class="setup-card">
     <h3>⚙️ Configuração inicial</h3>
-    <p>Insira a chave da API Gemini (Google). Ela fica salva neste navegador e não fica visível aos colaboradores.<br>
-    Obtenha gratuitamente em <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></p>
+    <p>Insira a chave da API Groq. Ela fica salva neste navegador e não fica visível aos colaboradores.<br>
+    Obtenha gratuitamente em <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a></p>
     <input type="password" id="api-key-input" placeholder="Cole a chave aqui..." />
     <button class="setup-btn" onclick="saveApiKey()">Salvar e continuar</button>
   </div>
@@ -588,32 +588,40 @@ async function sendMessage(text) {
   sendBtn.disabled = true;
   showTyping();
 
+  // Converte histórico para formato OpenAI
+  const messages = [
+    { role: 'system', content: SYSTEM_PROMPT },
+    ...history.map(m => ({ role: m.role === 'model' ? 'assistant' : 'user', content: m.parts[0].text }))
+  ];
+
   const body = {
-    system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-    contents: history,
-    generationConfig: { maxOutputTokens: 1024, temperature: 0.4 }
+    model: 'llama-3.1-8b-instant',
+    messages,
+    max_tokens: 1024,
+    temperature: 0.4
   };
 
   try {
-    const res  = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${key}`,
-      { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) }
-    );
+    const res  = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+      body: JSON.stringify(body)
+    });
     const data = await res.json();
     removeTyping();
 
     if (!res.ok) {
       const msg = data.error?.message || '';
-      if (msg.includes('API_KEY') || msg.includes('key')) {
+      if (res.status === 401) {
         localStorage.removeItem('_gak');
-        addBotMsg('Chave de API expirada ou inválida. Fale com o administrador para atualizar a chave.');
+        addBotMsg('Chave de API inválida. Fale com o administrador para atualizar a chave.');
       } else {
         addBotMsg(`Ocorreu um erro: ${msg || 'tente novamente.'}`);
       }
       sendBtn.disabled = false; return;
     }
 
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text
+    const reply = data.choices?.[0]?.message?.content
                   || 'Não consegui processar. Por favor, tente novamente.';
     addBotMsg(reply);
     history.push({ role:'model', parts:[{ text: reply }] });
