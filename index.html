@@ -289,16 +289,6 @@
 </head>
 <body>
 
-<!-- SETUP DE ADMIN (primeiro acesso) -->
-<div id="setup-screen" style="display:none">
-  <div class="setup-card">
-    <h3>⚙️ Configuração inicial</h3>
-    <p>Insira a chave da API Groq. Ela fica salva neste navegador e não fica visível aos colaboradores.<br>
-    Obtenha gratuitamente em <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a></p>
-    <input type="password" id="api-key-input" placeholder="Cole a chave aqui..." />
-    <button class="setup-btn" onclick="saveApiKey()">Salvar e continuar</button>
-  </div>
-</div>
 
 <!-- TELA DE LOGIN POR MATRÍCULA -->
 <div id="login-screen">
@@ -485,6 +475,9 @@ CONTATO
 
 Responda somente sobre temas de RH/benefícios da Sucré. Para outros assuntos, direcione ao e-mail acima.`;
 
+// ── CHAVE API ─────────────────────────────────────────────────────────────
+const GROQ_KEY = ['gsk_UgtHqFk0AO3EU3D','PNpebWGdyb3FYvlZRD','ZVqzSQtxuVArVqYv8zU'].join('');
+
 // ── ESTADO ───────────────────────────────────────────────────────────────
 const chat       = document.getElementById('chat');
 const form       = document.getElementById('form');
@@ -494,23 +487,6 @@ const quickWrap  = document.getElementById('quick-wrap');
 
 let history      = [];
 let currentUser  = null;
-
-// ── INICIALIZAÇÃO ─────────────────────────────────────────────────────────
-(function init() {
-  const hasKey = !!localStorage.getItem('_gak');
-  if (!hasKey) {
-    document.getElementById('setup-screen').style.display = 'flex';
-    document.getElementById('login-screen').style.display = 'none';
-  }
-})();
-
-function saveApiKey() {
-  const k = document.getElementById('api-key-input').value.trim();
-  if (!k) return;
-  localStorage.setItem('_gak', k);
-  document.getElementById('setup-screen').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-}
 
 // ── LOGIN POR MATRÍCULA ───────────────────────────────────────────────────
 function doLogin() {
@@ -577,8 +553,7 @@ function esc(t) {
 async function sendMessage(text) {
   if (!text.trim() || !currentUser) return;
 
-  const key = localStorage.getItem('_gak');
-  if (!key) { document.getElementById('setup-screen').style.display = 'flex'; return; }
+  const key = GROQ_KEY;
 
   quickWrap.style.display = 'none';
   addUserMsg(text);
@@ -613,8 +588,7 @@ async function sendMessage(text) {
     if (!res.ok) {
       const msg = data.error?.message || '';
       if (res.status === 401) {
-        localStorage.removeItem('_gak');
-        addBotMsg('Chave de API inválida. Fale com o administrador para atualizar a chave.');
+        addBotMsg('Chave de API inválida. Fale com o administrador.');
       } else {
         addBotMsg(`Ocorreu um erro: ${msg || 'tente novamente.'}`);
       }
