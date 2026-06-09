@@ -21,5 +21,10 @@ export default async function handler(req, res) {
   });
 
   const data = await groqRes.json();
+
+  if (!groqRes.ok) {
+    console.error('Groq error', groqRes.status, JSON.stringify(data));
+  }
+
   res.status(groqRes.status).json(data);
 }
