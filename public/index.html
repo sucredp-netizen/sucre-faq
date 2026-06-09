@@ -568,8 +568,6 @@ CONTATO DO DEPARTAMENTO PESSOAL
 - Ouvidoria confidencial: https://app.feedz.com.br/ouvidoria
 - Atendimento presencial: segunda a sexta, até as 18h`;
 
-// ── CHAVE API ─────────────────────────────────────────────────────────────
-const GROQ_KEY = ['gsk_UgtHqFk0AO3EU3D','PNpebWGdyb3FYvlZRD','ZVqzSQtxuVArVqYv8zU'].join('');
 
 // ── ESTADO ───────────────────────────────────────────────────────────────
 const chat       = document.getElementById('chat');
@@ -658,17 +656,11 @@ async function sendMessage(text) {
   showTyping();
 
   try {
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    const res = await fetch('/api/chat', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + GROQ_KEY
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...history],
-        max_tokens: 1024,
-        temperature: 0.4
+        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...history]
       })
     });
     const data = await res.json();
