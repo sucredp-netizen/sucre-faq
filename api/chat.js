@@ -1,8 +1,33 @@
 import fs from "fs";
 import path from "path";
+import https from "https";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+function httpsPost(url, headers, body) {
+  return new Promise((resolve, reject) => {
+    const bodyStr = JSON.stringify(body);
+    const u = new URL(url);
+    const options = {
+      hostname: u.hostname,
+      path: u.pathname,
+      method: "POST",
+      headers: {
+        ...headers,
+        "Content-Length": Buffer.byteLength(bodyStr),
+      },
+    };
+    const req = https.request(options, (res) => {
+      let data = "";
+      res.on("data", (chunk) => (data += chunk));
+      res.on("end", () => resolve({ status: res.statusCode, body: data }));
+    });
+    req.on("error", reject);
+    req.write(bodyStr);
+    req.end();
+  });
+}
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -20,7 +45,7 @@ export default async function handler(req, res) {
     const faqPath = path.join(__dirname, "..", "faq.txt");
     faqContent = fs.readFileSync(faqPath, "utf-8");
   } catch (err) {
-    console.error("Erro ao ler faq.txt:", err);
+    console.error("Erro ao ler faq.txt:", err.message);
     return res.status(500).json({ error: "Erro interno. Tente novamente." });
   }
 
@@ -43,31 +68,31 @@ ${faqContent}`;
   ];
 
   try {
-    const apiRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
+    const result = await httpsPost(
+      "https://api.groq.com/openai/v1/chat/completions",
+      {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
       },
-      body: JSON.stringify({
+      {
         model: "gemma2-9b-it",
         messages: groqMessages,
         max_tokens: 1024,
         temperature: 0.4,
-      }),
-    });
+      }
+    );
 
-    const data = await apiRes.json();
+    const data = JSON.parse(result.body);
 
-    if (!apiRes.ok) {
-      console.error("Groq error:", data);
+    if (result.status !== 200) {
+      console.error("Groq error:", result.status, result.body);
       return res.status(500).json({ error: "Erro na API. Tente novamente." });
     }
 
     const text = data.choices?.[0]?.message?.content;
     res.status(200).json({ content: text || "Não consegui processar. Tente novamente." });
   } catch (error) {
-    console.error("Catch error:", error);
+    console.error("Erro:", error.message);
     res.status(500).json({ error: "Erro ao processar sua mensagem." });
   }
 }
