@@ -18,6 +18,33 @@ NÃO envie esse link ao final de respostas onde a dúvida já foi esclarecida.
 
 ${faqContent}`;
 
+async function callGroq(messages, retries = 3) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.GROQ_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'llama-3.1-8b-instant',
+        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
+        max_tokens: 1024,
+        temperature: 0.4
+      })
+    });
+
+    if (groqRes.status === 429 && attempt < retries) {
+      await new Promise(r => setTimeout(r, attempt * 2000));
+      continue;
+    }
+
+    const data = await groqRes.json();
+    if (!groqRes.ok) console.error('Groq error', groqRes.status, JSON.stringify(data));
+    return { status: groqRes.status, data };
+  }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
@@ -26,25 +53,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid request' });
   }
 
-  const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.GROQ_API_KEY}`
-    },
-    body: JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
-      messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
-      max_tokens: 1024,
-      temperature: 0.4
-    })
-  });
-
-  const data = await groqRes.json();
-
-  if (!groqRes.ok) {
-    console.error('Groq error', groqRes.status, JSON.stringify(data));
-  }
-
-  res.status(groqRes.status).json(data);
+  const { status, data } = await callGroq(messages);
+  res.status(status).json(data);
 }
