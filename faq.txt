@@ -1,0 +1,320 @@
+========================================================
+  FAQ – DÚVIDAS FREQUENTES DOS COLABORADORES
+  Sucré Alimentos – Departamento Pessoal
+  Baseado em conversas reais com colaboradores
+========================================================
+
+
+──────────────────────────────────────────────────────
+1. VALE TRANSPORTE
+──────────────────────────────────────────────────────
+
+P: O vale transporte é obrigatório? Como faço para aderir?
+R: A adesão ao VT é opcional. Quem não optou na admissão não recebe automaticamente.
+   Para aderir, é necessário assinar o termo de opção ao VT junto ao DP.
+   O cartão chega em cerca de 4 dias úteis após a solicitação.
+
+P: Qual o desconto do vale transporte?
+R: O desconto é de até 6% do salário-base, conforme a Lei nº 7.418/1985.
+
+P: Posso cancelar ou mudar minha opção de VT a qualquer momento?
+R: Não. Existem datas de corte para adesão e cancelamento — não é possível alterar no meio do mês.
+
+
+──────────────────────────────────────────────────────
+2. VALE ALIMENTAÇÃO
+──────────────────────────────────────────────────────
+
+P: Por que recebi menos no vale alimentação este mês?
+R: O VA é pago por dia efetivamente trabalhado (mínimo 6h). Faltas, feriados e dias de
+   atestado reduzem o valor proporcionalmente.
+   Cálculo: dias úteis trabalhados × R$20,00.
+
+P: Quando o vale alimentação é creditado?
+R: Até o 5º dia útil de cada mês.
+
+P: Se eu sair da empresa, preciso devolver o cartão?
+R: Não. O cartão é de propriedade do colaborador.
+
+
+──────────────────────────────────────────────────────
+3. SALÁRIO E PAGAMENTOS
+──────────────────────────────────────────────────────
+
+P: Quando cai o salário?
+R: O adiantamento (40%) é pago no dia 20 de cada mês (quando dia útil).
+   O restante (60%) é pago até o 5º dia útil do mês seguinte.
+   Pagamento via Banco do Brasil (conta salário).
+
+P: Não encontrei meu pagamento na conta — o que faço?
+R: Verifique o extrato no app do Banco do Brasil e confira agência e conta cadastrados.
+   Se ainda não localizar, contate o DP informando: nome, CPF, banco, agência, conta
+   e print do extrato.
+
+P: O décimo terceiro é pago de uma vez só?
+R: Não. A primeira parcela (50%) é paga em novembro e a segunda em dezembro
+   (já com desconto do INSS).
+
+P: Como é calculado o adicional noturno?
+R: Hora normal = Salário ÷ 220
+   Adicional noturno (20%) = Hora normal × 0,20
+   Total = Adicional × horas noturnas trabalhadas no mês.
+
+
+──────────────────────────────────────────────────────
+4. PONTO ELETRÔNICO – REGISTRO E AJUSTE
+──────────────────────────────────────────────────────
+
+P: Como faço para ajustar uma batida de ponto errada ou esquecida?
+R: No app: Meu RH > Meu Ponto > clique no dia com problema > Ajuste.
+   Para adicionar uma batida faltante antes das demais, use o botão
+   "Adicionar ponto antes" (botão verde).
+   Obs.: ajustes de dias anteriores só podem ser feitos no dia seguinte ou depois.
+   Não é permitido alterar batidas originais — apenas adicionar as que faltam.
+
+P: Qual é o login e senha do app de ponto?
+R: Login: CPF sem pontos ou traços.
+   Senha padrão inicial: @Sucre123
+
+P: O app de ponto não está funcionando — o que faço?
+R: Tente desinstalar e instalar novamente, ou limpe o cache do app nas configurações
+   do celular. Se persistir, solicite o ajuste no dia seguinte informando o problema.
+
+P: O ponto está mostrando horas negativas — o que significa?
+R: Significa que o colaborador está devendo horas que precisam ser compensadas.
+   A compensação pode ser feita trabalhando até 1h por dia e no máximo 4h semanais.
+
+P: O que são as pendências em amarelo/vermelho no app?
+R: Indicam batidas faltantes ou irregulares que precisam de ajuste no sistema.
+
+
+──────────────────────────────────────────────────────
+5. ATESTADO MÉDICO
+──────────────────────────────────────────────────────
+
+P: Como lanço um atestado no aplicativo?
+R: Meu RH > Meu Espelho Ponto > clique no dia > Abono > tipo "Atestado".
+   Informe: nome do médico, CRM, local de atendimento, período coberto e anexe a foto.
+   Para atestados com múltiplos dias: use "Abonar intervalo de dias" com data inicial e final.
+
+P: O CID é obrigatório no atestado?
+R: Não. Atestados sem CID são aceitos normalmente.
+
+P: O atestado cobre o dia todo ou só as horas que faltei?
+R: O atestado abona o dia inteiro (ou os dias indicados pelo médico).
+
+P: Preciso entregar o atestado original no DP?
+R: A versão digital no app é válida. O original deve ser apresentado apenas se solicitado.
+
+
+──────────────────────────────────────────────────────
+6. DECLARAÇÃO DE COMPARECIMENTO (CONSULTAS/EXAMES)
+──────────────────────────────────────────────────────
+
+P: Qual a diferença entre atestado e declaração médica?
+R: Atestado → abona o dia inteiro (ou os dias indicados).
+   Declaração → abona apenas até 4 horas.
+
+P: Como lanço uma declaração de consulta no ponto?
+R: Meu RH > Meu Ponto > clique no dia > Abono > tipo "Ausência Justificada".
+   Informe o período de ausência e anexe o documento.
+
+P: Fui a uma consulta de pré-natal — abona o dia todo?
+R: Sim. Consultas de pré-natal abonam o dia inteiro, não apenas as horas.
+
+P: Fiz o ASO Periódico solicitado pela empresa — as horas são abonadas?
+R: Sim. As horas do ASO Periódico são abonadas integralmente por ser exame da empresa.
+
+
+──────────────────────────────────────────────────────
+7. BANCO DE HORAS
+──────────────────────────────────────────────────────
+
+P: Como funciona o banco de horas?
+R: Horas extras acumulam banco positivo; horas não trabalhadas sem justificativa
+   geram banco negativo. Compensação em até 2 meses. Se não compensadas,
+   são pagas como horas extras com adicional legal.
+
+P: Como compensar horas negativas?
+R: Trabalhando até 1h extra por dia e no máximo 4h por semana.
+
+P: Posso usar horas positivas para sair mais cedo?
+R: Sim, mas precisa combinar previamente com o gestor direto.
+
+P: Trabalhei em feriado — as horas vão para o banco?
+R: Não. Feriado trabalhado é pago em dobro (100% a mais) e não pode ser
+   compensado em banco de horas.
+
+
+──────────────────────────────────────────────────────
+8. FÉRIAS
+──────────────────────────────────────────────────────
+
+P: Quando saberei minhas férias?
+R: A programação de férias é feita em dezembro para o ano seguinte. As datas
+   podem ser alteradas conforme necessidade da empresa.
+
+P: Quando recebo o pagamento das férias?
+R: Até 48 horas antes do início das férias (sábados contam como dia útil).
+
+P: Como assino o aviso e recibo de férias?
+R: Os documentos chegam por e-mail via Caju/Click Sign para assinatura digital.
+   Não é necessário ir à empresa.
+
+P: Posso fracionar as férias?
+R: Sim, em até 3 períodos.
+
+P: Quantos dias de férias terei se tiver faltas?
+R: Até 5 faltas → 30 dias | 6 a 14 → 24 dias | 15 a 23 → 18 dias | 24 a 32 → 12 dias.
+
+
+──────────────────────────────────────────────────────
+9. LICENÇAS
+──────────────────────────────────────────────────────
+
+P: Nasceu meu filho — quantos dias tenho de licença?
+R: Licença paternidade estendida: 20 dias corridos.
+   Enviar comprovante de nascimento ao DP e posteriormente a Certidão de Nascimento.
+
+P: Quantos dias tenho no caso de falecimento na família?
+R: 2 dias corridos para falecimento de cônjuge, pais, filhos, irmãos ou pessoa
+   declarada na carteira de trabalho.
+
+P: Quantos dias de licença para casamento?
+R: 3 dias corridos para casamento civil.
+
+P: Qual a duração da licença maternidade?
+R: 180 dias (licença maternidade estendida).
+
+
+──────────────────────────────────────────────────────
+10. PLANO DE SAÚDE
+──────────────────────────────────────────────────────
+
+P: Quando posso aderir ao plano de saúde?
+R: Solicitar ao DP até o dia 10 de cada mês. O plano começa a vigorar no mês seguinte.
+   Disponível após 90 dias de vínculo empregatício.
+
+P: Quanto custa o plano para o colaborador?
+R: A empresa custeia 50% do plano titular (Unimed Essencial Max).
+   O valor varia conforme a idade do colaborador.
+
+P: Posso incluir meus filhos e cônjuge no plano?
+R: Sim. Para dependentes, o colaborador paga 100% do valor adicional.
+   Documentos necessários: RG, CPF, Certidão de Nascimento (filhos), Declaração Escolar.
+
+P: Como uso o plano para urgência e emergência?
+R: Não precisa marcar consulta. Basta procurar a clínica credenciada mais próxima.
+   Para localizar clínicas: app "Minha Unimed" (laranja) ou "Cliente Unimed Fortaleza" (verde).
+
+P: Se eu cancelar o plano, posso reativar quando quiser?
+R: Não. Após o cancelamento, precisa esperar 3 meses para reativar.
+   Para cancelar: assinar ficha de exclusão no DP.
+
+P: A empresa tem mais de um plano de saúde?
+R: Sim. Plano padrão: Unimed Essencial Max (empresa paga 50%).
+   Também há o Hapvida como segunda opção.
+
+
+──────────────────────────────────────────────────────
+11. SALÁRIO FAMÍLIA
+──────────────────────────────────────────────────────
+
+P: Tenho filhos — tenho direito ao salário família?
+R: Sim. Envie os documentos dos filhos ao DP para cadastro:
+   Certidão de Nascimento, CPF, Carteira de Vacinação e Declaração Escolar.
+   (RG não é obrigatório para crianças pequenas.)
+   O benefício passa a constar na próxima folha após o cadastro.
+
+
+──────────────────────────────────────────────────────
+12. CONTRACHEQUE / HOLERITE
+──────────────────────────────────────────────────────
+
+P: Como acesso meu contracheque?
+R: Pelo aplicativo Caju. Em caso de dificuldade, o DP pode enviar pelo WhatsApp.
+
+P: Não consigo acessar o Caju — o que faço?
+R: Contate o suporte do Caju:
+   WhatsApp: (11) 4118-3826
+   E-mail: oi@caju.com.br
+   Ou solicite ao DP para atualizar seus dados de acesso.
+
+
+──────────────────────────────────────────────────────
+13. ASO / EXAME OCUPACIONAL
+──────────────────────────────────────────────────────
+
+P: Onde realizo o exame admissional/demissional/periódico?
+R: Clínica Quality — Rod. Dr. Mendel Steinbruch, 10293, sala 3335
+   (Pátio Pajuçara), Maracanaú.
+   Horário: a partir das 07h, por ordem de chegada (apenas pela manhã).
+   Levar documento com foto e a guia emitida pelo DP.
+
+P: Preciso fazer algum exame antes de retornar de afastamento?
+R: Sim. Obter atestado médico de aptidão → DP solicita guia do ASO de retorno →
+   só retorna ao trabalho após resultado favorável.
+
+
+──────────────────────────────────────────────────────
+14. AFASTAMENTO / INSS
+──────────────────────────────────────────────────────
+
+P: Precisei me afastar por cirurgia — como funciona com o INSS?
+R: A empresa prepara o requerimento para abertura do benefício.
+   O DP envia o PDF por WhatsApp e o colaborador leva ao INSS para dar entrada.
+   Durante o afastamento, a remuneração é responsabilidade do INSS.
+
+
+──────────────────────────────────────────────────────
+15. CONTRIBUIÇÃO SINDICAL
+──────────────────────────────────────────────────────
+
+P: O que é o desconto de "Contribuição Sindical Laboral"?
+R: É a contribuição ao Sindipan de Maracanaú, que fornece a Convenção Coletiva,
+   assistência jurídica e realiza eventos para os colaboradores.
+   Valor: equivalente a um dia de salário.
+
+P: Sou obrigado a pagar a contribuição sindical?
+R: Não. Quem não quiser pagar deve assinar o termo de oposição ao desconto.
+   O DP envia o documento por e-mail para assinatura digital.
+
+
+──────────────────────────────────────────────────────
+16. ATUALIZAÇÃO CADASTRAL
+──────────────────────────────────────────────────────
+
+P: Como atualizo meu endereço na empresa?
+R: Enviar comprovante de residência no nome do colaborador (conta de água, energia
+   ou internet). Após validação, a contabilidade atualiza no e-Social e o colaborador
+   assina ficha eletrônica via Caju/Click Sign.
+   Sem comprovante no próprio nome, a atualização não pode ser realizada.
+
+
+──────────────────────────────────────────────────────
+17. CRACHÁ
+──────────────────────────────────────────────────────
+
+P: Meu crachá está danificado — como solicito um novo?
+R: Solicitar ao DP. Custo aproximado de R$8,00.
+   É necessário fornecer uma foto para confecção.
+
+
+──────────────────────────────────────────────────────
+18. CONTRATO DE EXPERIÊNCIA
+──────────────────────────────────────────────────────
+
+P: Quanto tempo dura o contrato de experiência?
+R: 45 dias, podendo ser prorrogado por mais 45 dias (máximo de 90 dias no total).
+   Ao final, é feita uma avaliação para decisão de efetivação.
+
+
+──────────────────────────────────────────────────────
+  CONTATO DO DEPARTAMENTO PESSOAL
+──────────────────────────────────────────────────────
+
+  WhatsApp DP: https://wa.me/5585997153774
+  Ouvidoria confidencial: https://app.feedz.com.br/ouvidoria
+  Atendimento presencial: segunda a sexta, até às 18h
+
+========================================================

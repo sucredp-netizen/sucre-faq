@@ -1,5 +1,8 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -12,9 +15,14 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Invalid request" });
   }
 
-  // Lê o FAQ em tempo real — atualizar o txt e fazer deploy já reflete na Ana
-  const faqPath = path.join(process.cwd(), "FAQ - Dúvidas dos Colaboradores.txt");
-  const faqContent = fs.readFileSync(faqPath, "utf-8");
+  let faqContent = "";
+  try {
+    const faqPath = path.join(__dirname, "..", "faq.txt");
+    faqContent = fs.readFileSync(faqPath, "utf-8");
+  } catch (err) {
+    console.error("Erro ao ler faq.txt:", err);
+    return res.status(500).json({ error: "Erro interno. Tente novamente." });
+  }
 
   const SYSTEM_PROMPT = `Você é a Ana, assistente virtual de RH da Sucré Alimentos.
 Responda em português, de forma amigável, clara e objetiva.
@@ -52,14 +60,14 @@ ${faqContent}`;
     const data = await apiRes.json();
 
     if (!apiRes.ok) {
-      console.error(data);
+      console.error("Groq error:", data);
       return res.status(500).json({ error: "Erro na API. Tente novamente." });
     }
 
     const text = data.choices?.[0]?.message?.content;
     res.status(200).json({ content: text || "Não consegui processar. Tente novamente." });
   } catch (error) {
-    console.error(error);
+    console.error("Catch error:", error);
     res.status(500).json({ error: "Erro ao processar sua mensagem." });
   }
 }
