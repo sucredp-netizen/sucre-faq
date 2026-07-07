@@ -388,6 +388,85 @@ function matriculaToEmail(m) {
   return m.toUpperCase().replace(/[^A-Z0-9]/g, '').toLowerCase() + '@sucre-faq.interno';
 }
 
+// ── BUSCA NO FAQ (sem IA / sem token) ─────────────────────────────────────
+let FAQ = [];
+const CONTATO_DP = 'https://wa.me/5585997153774';
+
+const STOPWORDS = new Set('a o as os um uma de da do das dos e ou que como para por com no na nos nas em ao aos meu minha eu se qual quais quando onde posso fazer faco sobre mais ser estou esta isso ja pra nao sim tem ter tenho preciso quero gostaria vou'.split(/\s+/));
+
+// Apelidos/siglas → palavras da base, para melhorar o reconhecimento.
+const SINONIMOS = {
+  vt: ['vale','transporte'], va: ['vale','alimentacao'], vr: ['vale','refeicao'],
+  holerite: ['contracheque'], demonstrativo: ['contracheque'],
+  aso: ['exame','ocupacional'], inss: ['afastamento','inss','beneficio'],
+  pgto: ['pagamento'], salario: ['salario','pagamento'],
+  convenio: ['plano','saude'], sindicato: ['contribuicao','sindical'],
+  maternidade: ['licenca','maternidade'], paternidade: ['licenca','paternidade'],
+  casamento: ['licenca','casamento'], falecimento: ['licenca','falecimento'], obito: ['licenca','falecimento']
+};
+
+function normalizar(texto) {
+  return texto.toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')   // remove acentos
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/).filter(Boolean);
+}
+
+function tokens(texto) {
+  const out = [];
+  for (const t of normalizar(texto)) {
+    if (SINONIMOS[t]) out.push(...SINONIMOS[t]);
+    if (t.length >= 2 && !STOPWORDS.has(t)) out.push(t);
+  }
+  return out;
+}
+
+// Carrega as perguntas/respostas uma vez e pré-calcula os tokens de cada uma.
+const faqReady = fetch('/api/faq')
+  .then(r => r.json())
+  .then(d => {
+    FAQ = d.pares.map(p => ({
+      ...p,
+      tokensPergunta: new Set(tokens(p.pergunta + ' ' + (p.categoria || ''))),
+      tokensResposta: new Set(tokens(p.resposta))
+    }));
+  })
+  .catch(() => { FAQ = []; });
+
+function ehSaudacao(texto) {
+  const t = normalizar(texto).join(' ');
+  return /^(oi|ola|opa|bom dia|boa tarde|boa noite|tudo bem|ei)\b/.test(t) && t.length < 20;
+}
+
+function semResposta() {
+  return 'Não encontrei essa informação na minha base de conhecimento. Tente reformular a pergunta com outras palavras, ou fale diretamente com o Departamento Pessoal: ' + CONTATO_DP;
+}
+
+// Encontra a resposta mais parecida com a pergunta do colaborador.
+function responder(pergunta) {
+  if (ehSaudacao(pergunta)) {
+    return 'Oi! 😊 Como posso te ajudar? Você pode perguntar sobre salário, vale transporte, vale alimentação, ponto, férias, licenças, plano de saúde e muito mais — é só escolher um atalho ou escrever sua dúvida.';
+  }
+
+  const q = [...new Set(tokens(pergunta))];
+  if (!q.length || !FAQ.length) return semResposta();
+
+  let melhor = null, melhorForca = 0, melhorAcertosP = 0;
+  for (const item of FAQ) {
+    let acertosP = 0, acertosR = 0;
+    for (const t of q) {
+      if (item.tokensPergunta.has(t)) acertosP++;
+      else if (item.tokensResposta.has(t)) acertosR++;   // resposta vale menos
+    }
+    const forca = acertosP + acertosR * 0.5 + (acertosP + acertosR) / q.length * 0.1;
+    if (forca > melhorForca) { melhorForca = forca; melhorAcertosP = acertosP; melhor = item; }
+  }
+
+  // Aceita quando há força suficiente, ou quando bate a pergunta numa consulta curta.
+  const bomMatch = melhorForca >= 2 || (melhorAcertosP >= 1 && q.length <= 2);
+  return (melhor && bomMatch) ? melhor.resposta : semResposta();
+}
+
 // ── SISTEMA PROMPT gerenciado pelo backend (api/chat.js) ─────────────────
 
 
@@ -523,41 +602,21 @@ async function sendMessage(text) {
 
   quickWrap.style.display = 'none';
   addUserMsg(text);
-  history.push({ role: 'user', content: text });
 
   inputEl.value = ''; inputEl.style.height = 'auto';
   sendBtn.disabled = true;
   showTyping();
 
-  try {
-    const { data: { session } } = await sb.auth.getSession();
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${session?.access_token || ''}`
-      },
-      body: JSON.stringify({ messages: history })
-    });
-    const data = await res.json();
+  await faqReady;                 // garante que a base já carregou
+  const resposta = responder(text);
+
+  // Pequeno atraso só para dar naturalidade ao "digitando…".
+  setTimeout(() => {
     removeTyping();
-
-    if (!res.ok) {
-      const msg = data?.error?.message || 'Ocorreu um erro. Tente novamente.';
-      addBotMsg(msg);
-      sendBtn.disabled = false; return;
-    }
-
-    const reply = data.choices?.[0]?.message?.content || 'Não consegui processar. Por favor, tente novamente.';
-    addBotMsg(reply);
-    history.push({ role: 'assistant', content: reply });
-  } catch {
-    removeTyping();
-    addBotMsg('Não consegui me conectar. Verifique sua conexão e tente novamente.');
-  }
-
-  sendBtn.disabled = false;
-  inputEl.focus();
+    addBotMsg(resposta);
+    sendBtn.disabled = false;
+    inputEl.focus();
+  }, 350);
 }
 
 function sendQuick(t) { sendMessage(t); }
