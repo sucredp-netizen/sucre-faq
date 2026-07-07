@@ -1,21 +1,3 @@
-Você é a assistente virtual inteligente do Departamento Pessoal da Sucré Alimentos. Seu objetivo é ajudar os colaboradores respondendo a dúvidas frequentes de forma clara e direta, baseando-se estritamente no manual interno fornecido.
-
-REGRAS DE OURO SOBRE OS CONTATOS (MUITO IMPORTANTE):
-1. OBRIGATÓRIO: Você NÃO deve mostrar o link do WhatsApp do DP (https://wa.me/5585997153774) nas respostas comuns do dia a dia. Esconda-os por padrão.
-2. Você SÓ trará e exibirá esse dois link de contato se o colaborador se encaixar em uma destas situações:
-   - Se o colaborador disser explicitamente que "não entendeu" a sua explicação.
-   - Se o colaborador disser que a resposta "não ajudou" ou continuar com dúvidas após você tentar explicar.
-   - Se ele pedir diretamente para "falar com um atendente", "falar com humano" ou "falar com o DP".
-3. Quando o colaborador não entender, envie o texto exatamente assim:
-   Caso sua dúvida persista ou precise de atendimento humano, você pode falar diretamente com a nossa equipe:
-   🟢 WhatsApp DP: https://wa.me/5585997153774
- 
-
-REGRAS GERAIS DE COMPORTAMENTO:
-- Responda apenas utilizando as informações do FAQ abaixo. 
-- Se o colaborador perguntar algo que não está no texto, responda educadamente que não possui essa informação e, como você não sabe a resposta, aí sim você pode fornecer os links de contato acima para ele tirar a dúvida com o DP.
-- Mantenha a Temperatura em 0.1 ou 0.2 para garantir o cumprimento dessas regras.
-
 
 ========================================================
   FAQ – DÚVIDAS FREQUENTES DOS COLABORADORES
@@ -29,31 +11,45 @@ REGRAS GERAIS DE COMPORTAMENTO:
 ──────────────────────────────────────────────────────
 
 P: O vale transporte é obrigatório? Como faço para aderir?
-R: A adesão ao VT é opcional. Quem não optou na admissão não recebe automaticamente.
-   Para aderir, é necessário assinar o termo de opção ao VT junto ao DP.
-   O cartão chega em cerca de 4 dias úteis após a solicitação.
+R: Não. A adesão ao Vale-Transporte é opcional.
+O colaborador que não optou pelo benefício no momento da admissão não passa a receber automaticamente. Para aderir, é necessário solicitar ao Departamento Pessoal e assinar o termo de opção do Vale-Transporte.
+Após a solicitação, o cartão é emitido e costuma chegar em até 4 dias úteis.
 
 P: Qual o desconto do vale transporte?
 R: O desconto é de até 6% do salário-base, conforme a Lei nº 7.418/1985.
 
 P: Posso cancelar ou mudar minha opção de VT a qualquer momento?
-R: Não. Existem datas de corte para adesão e cancelamento — não é possível alterar no meio do mês.
+R: Não. A adesão, o cancelamento ou a alteração da opção de Vale-Transporte seguem datas de corte e não podem ser feitos no meio do mês.
+Para que a mudança seja válida para o mês seguinte, observe os prazos:
+Cancelamento do VT: solicitar ao Departamento Pessoal até o dia 20 de cada mês.
+Alteração da opção de VT: solicitar ao Departamento Pessoal até o dia 15 de cada mês.
+As alterações aprovadas passam a valer somente a partir do 1º dia útil do mês seguinte à solicitação.
 
+P: Não recebi meu Vale-Transporte. O que devo fazer?
+R: Primeiro, verifique se a solicitação ou alteração do Vale-Transporte foi feita dentro do prazo informado pelo Departamento Pessoal.
+Também confira se houve mudança de endereço, alteração de rota, cancelamento solicitado ou alguma pendência cadastral.
+Se mesmo assim o benefício não aparecer, procure o Departamento Pessoal e informe seu nome completo, matrícula, endereço atual e o mês de referência para conferência.
 
 ──────────────────────────────────────────────────────
 2. VALE ALIMENTAÇÃO
 ──────────────────────────────────────────────────────
 
 P: Por que recebi menos no vale alimentação este mês?
-R: O VA é pago por dia efetivamente trabalhado (mínimo 6h). Faltas, feriados e dias de
-   atestado reduzem o valor proporcionalmente.
-   Cálculo: dias úteis trabalhados × R$20,00.
+R: R: O Vale-Alimentação é pago conforme os dias em que o colaborador efetivamente trabalha, considerando a jornada mínima de 6 horas no dia.
+
+Por isso, o valor pode variar quando houver faltas, férias, afastamentos, feriados, admissão ou desligamento no meio do mês, ou outras situações em que não haja trabalho no dia.
+
+O cálculo padrão é:
+Dias efetivamente trabalhados × R$ 20,00.
+
 
 P: Quando o vale alimentação é creditado?
-R: Até o 5º dia útil de cada mês.
+R: O Vale-Alimentação é creditado até o 5º dia útil de cada mês.
+O valor creditado considera os dias trabalhados no mês de referência, conforme as regras do benefício.
 
 P: Se eu sair da empresa, preciso devolver o cartão?
-R: Não. O cartão é de propriedade do colaborador.
+R: R: Não. Em caso de desligamento, não é necessário devolver o cartão do Vale-Alimentação.
+O cartão permanece com o colaborador, mas novos créditos deixam de ser realizados após o encerramento do vínculo com a empresa, conforme as regras do benefício.
 
 
 ──────────────────────────────────────────────────────
@@ -61,23 +57,39 @@ R: Não. O cartão é de propriedade do colaborador.
 ──────────────────────────────────────────────────────
 
 P: Quando cai o salário?
-R: O adiantamento (40%) é pago no dia 20 de cada mês (quando dia útil).
-   O restante (60%) é pago até o 5º dia útil do mês seguinte.
-   Pagamento via Banco do Brasil (conta salário).
+R: O pagamento é realizado em duas etapas:
+Adiantamento salarial: corresponde a 40% do salário e é pago no dia 20 de cada mês. Quando o dia 20 não for dia útil, o pagamento será realizado no dia útil imediatamente anterior.
+Pagamento do saldo: corresponde aos 60% restantes e é pago até o 5º dia útil do mês seguinte, conforme prazo previsto na CLT.
+O pagamento é realizado via Banco do Brasil, em conta salário.
 
 P: Não encontrei meu pagamento na conta — o que faço?
-R: Verifique o extrato no app do Banco do Brasil e confira agência e conta cadastrados.
-   Se ainda não localizar, contate o DP informando: nome, CPF, banco, agência, conta
-   e print do extrato.
+R: Primeiro, verifique a sua conta salário do Banco do Brasil, pelo aplicativo ou extrato bancário.
+Se você possui portabilidade salarial, o salário entra primeiro na conta salário do Banco do Brasil e depois é enviado automaticamente para o banco escolhido por você. Nesse caso, verifique também a conta de destino da portabilidade.
+Se o valor saiu da conta salário, mas não chegou na conta de destino, entre em contato com o banco da portabilidade para verificar o processamento da transferência.
+Caso o pagamento não apareça na conta salário do Banco do Brasil, procure o Departamento Pessoal e envie: nome completo, CPF, banco, agência, conta e print do extrato.
 
 P: O décimo terceiro é pago de uma vez só?
-R: Não. A primeira parcela (50%) é paga em novembro e a segunda em dezembro
-   (já com desconto do INSS).
+R: Não. O décimo terceiro salário é pago em duas parcelas.
+A primeira parcela corresponde a 50% do valor do décimo terceiro e é paga até novembro.
+A segunda parcela é paga até dezembro, com os descontos legais aplicáveis, como INSS e, quando houver, Imposto de Renda.
 
 P: Como é calculado o adicional noturno?
-R: Hora normal = Salário ÷ 220
-   Adicional noturno (20%) = Hora normal × 0,20
-   Total = Adicional × horas noturnas trabalhadas no mês.
+R: O adicional noturno é pago quando o colaborador trabalha no período das 22h às 5h.
+Para calcular, primeiro é identificado o valor da hora normal:
+Salário-base ÷ 220 = valor da hora normal
+Depois, aplica-se o adicional noturno de 20%:
+Valor da hora normal × 20% = valor do adicional noturno por hora
+O total a receber no mês depende da quantidade de horas noturnas trabalhadas, considerando as regras legais de apuração da jornada noturna.
+
+P: Tive desconto no salário e não entendi o motivo. O que devo fazer?
+R: Primeiro, consulte seu contracheque e verifique a descrição dos descontos.
+
+Os descontos podem estar relacionados a faltas, atrasos, banco de horas negativo, benefícios, plano de saúde, vale-transporte, contribuições previstas em convenção coletiva ou outros lançamentos autorizados.
+Caso tenha dúvida, procure o Departamento Pessoal para conferência, informando o mês de referência e enviando o contracheque ou print do valor questionado.
+
+P: O adicional de insalubridade aparece na folha de pagamento?
+R: Sim, quando aplicável. O adicional de insalubridade é lançado na folha de pagamento conforme avaliação técnica, função exercida, exposição ao risco e regras legais aplicáveis.
+Em caso de dúvida sobre o recebimento ou valor lançado, o colaborador deve procurar o Departamento Pessoal para conferência.
 
 
 ──────────────────────────────────────────────────────
@@ -85,26 +97,36 @@ R: Hora normal = Salário ÷ 220
 ──────────────────────────────────────────────────────
 
 P: Como faço para ajustar uma batida de ponto errada ou esquecida?
-R: No app: Meu RH > Meu Ponto > clique no dia com problema > Ajuste.
-   Para adicionar uma batida faltante antes das demais, use o botão
-   "Adicionar ponto antes" (botão verde).
-   Obs.: ajustes de dias anteriores só podem ser feitos no dia seguinte ou depois.
-   Não é permitido alterar batidas originais — apenas adicionar as que faltam.
+R: O ajuste deve ser feito pelo aplicativo, no caminho:
+Meu RH > Meu Ponto > selecionar o dia com problema > Ajuste
+Se faltou registrar uma batida, você deve adicionar o ponto manualmente no dia correto. Quando a batida faltante for antes das demais marcações do dia, utilize a opção “Adicionar ponto antes”.
+Os ajustes de dias anteriores só ficam disponíveis a partir do dia seguinte.
+Importante: não é permitido alterar ou excluir batidas originais. O ajuste serve apenas para incluir as marcações que faltaram, com a devida justificativa.
 
 P: Qual é o login e senha do app de ponto?
 R: Login: CPF sem pontos ou traços.
    Senha padrão inicial: @Sucre123
 
 P: O app de ponto não está funcionando — o que faço?
-R: Tente desinstalar e instalar novamente, ou limpe o cache do app nas configurações
-   do celular. Se persistir, solicite o ajuste no dia seguinte informando o problema.
+R: Primeiro, tente algumas ações simples:
+Verifique sua conexão com a internet, feche e abra o aplicativo novamente, limpe o cache nas configurações do celular ou desinstale e instale o app outra vez.
+Se mesmo assim o app não funcionar, informe o problema ao seu gestor no mesmo dia e registre o ocorrido.
+No dia seguinte, solicite o ajuste do ponto pelo aplicativo, informando a justificativa do problema.
 
 P: O ponto está mostrando horas negativas — o que significa?
-R: Significa que o colaborador está devendo horas que precisam ser compensadas.
-   A compensação pode ser feita trabalhando até 1h por dia e no máximo 4h semanais.
+R: Significa que o colaborador está com horas em aberto e precisa compensá-las, conforme orientação do gestor e regras da empresa.
+A compensação pode ser feita com até 1 hora a mais por dia, respeitando o limite de 4 horas por semana.
+A compensação deve ser alinhada previamente com o gestor e registrada corretamente no ponto.
 
 P: O que são as pendências em amarelo/vermelho no app?
-R: Indicam batidas faltantes ou irregulares que precisam de ajuste no sistema.
+R: As pendências em amarelo ou vermelho indicam que existe alguma inconsistência no ponto, como batida faltante, marcação fora do padrão ou registro que precisa de ajuste.
+Quando aparecer uma pendência, o colaborador deve verificar o dia sinalizado no app e realizar o ajuste necessário, informando a justificativa correta.
+Manter o ponto regularizado evita divergências no fechamento da folha e no banco de horas.
+
+P: Esqueci ou tive problema com o ponto facial. O que devo fazer?
+R: Caso não consiga registrar o ponto facial, comunique seu gestor no mesmo dia e registre a situação.
+No dia seguinte, solicite o ajuste pelo aplicativo, informando o horário correto e a justificativa.
+O ajuste será analisado conforme os registros, a justificativa apresentada e as regras da empresa.
 
 
 ──────────────────────────────────────────────────────
@@ -112,18 +134,28 @@ R: Indicam batidas faltantes ou irregulares que precisam de ajuste no sistema.
 ──────────────────────────────────────────────────────
 
 P: Como lanço um atestado no aplicativo?
-R: Meu RH > Meu Espelho Ponto > clique no dia > Abono > tipo "Atestado".
-   Informe: nome do médico, CRM, local de atendimento, período coberto e anexe a foto.
-   Para atestados com múltiplos dias: use "Abonar intervalo de dias" com data inicial e final.
+R: R: O atestado deve ser lançado pelo aplicativo no caminho:
+Meu RH > Meu Espelho Ponto > selecionar o dia > Abono > tipo “Atestado”
+Ao lançar o atestado, preencha as informações solicitadas, como: nome do médico, CRM, local de atendimento e período coberto pelo atestado. Também é necessário anexar a foto do documento.
+Quando o atestado for de mais de um dia, utilize a opção “Abonar intervalo de dias” e informe a data inicial e final do afastamento.
+O documento será analisado conforme as regras internas da empresa e a legislação aplicável.
 
 P: O CID é obrigatório no atestado?
-R: Não. Atestados sem CID são aceitos normalmente.
+R: Não. O CID não é obrigatório para apresentação do atestado à empresa.
+Atestados sem CID são aceitos normalmente, desde que contenham as informações necessárias, como identificação do colaborador, data, período de afastamento, assinatura e carimbo do profissional de saúde.
+O CID só deve constar no atestado quando o colaborador autorizar essa informação.
+Em casos de afastamento pelo INSS, o CID pode ajudar na análise médica/pericial. Por isso, quando houver possibilidade de afastamento previdenciário, o colaborador deve conversar com o médico sobre a inclusão dessa informação no documento.
 
 P: O atestado cobre o dia todo ou só as horas que faltei?
-R: O atestado abona o dia inteiro (ou os dias indicados pelo médico).
+R: Depende da informação registrada no atestado.
+Quando o atestado indicar afastamento por 1 dia ou mais, ele abona o dia inteiro ou os dias informados pelo médico.
+Quando o atestado indicar apenas um período de horas, serão abonadas somente as horas indicadas no documento.
 
 P: Preciso entregar o atestado original no DP?
-R: A versão digital no app é válida. O original deve ser apresentado apenas se solicitado.
+R: Não é necessário entregar o atestado original de imediato.
+Antes de lançar o atestado no aplicativo, o colaborador deve comunicar o seu gestor sobre a ausência.
+Depois, o atestado deve ser enviado pelo aplicativo para análise do Departamento Pessoal. A foto anexada precisa estar legível e mostrar todas as informações do documento.
+O atestado original deve ser guardado pelo colaborador e apresentado ao DP caso seja solicitado.
 
 
 ──────────────────────────────────────────────────────
@@ -131,38 +163,62 @@ R: A versão digital no app é válida. O original deve ser apresentado apenas s
 ──────────────────────────────────────────────────────
 
 P: Qual a diferença entre atestado e declaração médica?
-R: Atestado → abona o dia inteiro (ou os dias indicados).
-   Declaração → abona apenas até 4 horas.
+R: O atestado médico informa que o colaborador precisa se afastar do trabalho por motivo de saúde. O abono será feito conforme o período indicado no documento: horas, 1 dia ou mais dias.
+A declaração médica apenas comprova que o colaborador compareceu a uma consulta, exame ou atendimento. Ela não tem o mesmo efeito do atestado e pode não gerar abono automático. A declaração poderá justificar e abonar até 4 horas, conforme regra interna, convenção coletiva aplicável e análise do documento.
+
+Alguns tipos de declaração podem não ser aceitos para abono, quando não houver obrigatoriedade legal, previsão em convenção coletiva ou enquadramento na regra interna da empresa.
+Em todos os casos, o documento deve ser enviado pelo aplicativo e será analisado pelo Departamento Pessoal.
 
 P: Como lanço uma declaração de consulta no ponto?
-R: Meu RH > Meu Ponto > clique no dia > Abono > tipo "Ausência Justificada".
-   Informe o período de ausência e anexe o documento.
+R: A declaração de consulta deve ser lançada pelo aplicativo no caminho:
+Meu RH > Meu Ponto > selecionar o dia > Abono > tipo “Ausência Justificada”
+Informe o período em que esteve ausente e anexe a foto da declaração.
+A foto precisa estar legível e conter as informações do atendimento, como data, horário/período, local de atendimento, assinatura e carimbo do profissional ou da clínica.
+Após o envio, o documento será analisado pelo Departamento Pessoal conforme a regra interna da empresa e a convenção coletiva aplicável.
 
 P: Fui a uma consulta de pré-natal — abona o dia todo?
-R: Sim. Consultas de pré-natal abonam o dia inteiro, não apenas as horas.
+R: Depende do documento apresentado.
+As consultas e exames de pré-natal são abonados conforme o período necessário para o atendimento, desde que o colaborador apresente a declaração ou atestado correspondente.
+Quando o documento indicar apenas o horário ou período da consulta, será abonado o período informado.
+Quando o médico indicar afastamento pelo dia inteiro, o abono será realizado conforme o documento.
+O comprovante deve ser lançado no aplicativo e será analisado pelo Departamento Pessoal.
 
 P: Fiz o ASO Periódico solicitado pela empresa — as horas são abonadas?
-R: Sim. As horas do ASO Periódico são abonadas integralmente por ser exame da empresa.
-
+R: Sim. Quando o ASO Periódico é solicitado pela empresa, as horas utilizadas para realizar o exame são abonadas.
+Após a realização do exame, caso ainda haja expediente e o colaborador esteja apto a retornar, ele deve voltar ao trabalho normalmente.
+Se o colaborador finalizar o exame antes do término da jornada e não retornar ao trabalho sem justificativa, as horas não trabalhadas poderão ser descontadas, assim como poderá haver impacto nos benefícios vinculados aos dias ou horas efetivamente trabalhados.
+Para o abono, é necessário apresentar o comprovante de comparecimento ou o ASO, conforme orientação do Departamento Pessoal.
 
 ──────────────────────────────────────────────────────
 7. BANCO DE HORAS
 ──────────────────────────────────────────────────────
 
 P: Como funciona o banco de horas?
-R: Horas extras acumulam banco positivo; horas não trabalhadas sem justificativa
-   geram banco negativo. Compensação em até 2 meses. Se não compensadas,
-   são pagas como horas extras com adicional legal.
+R: R: O banco de horas registra as horas trabalhadas a mais ou a menos pelo colaborador.
+Quando o colaborador trabalha além da jornada prevista, essas horas podem gerar saldo positivo no banco de horas.
+Quando há saída antecipada, atraso ou ausência sem justificativa, pode ser gerado saldo negativo, que deverá ser compensado conforme orientação do gestor e regras da empresa.
+A compensação deve ocorrer dentro do prazo de até 2 meses, conforme regra interna/acordo aplicável.
+Se, ao final do período de compensação, houver saldo positivo não compensado, as horas serão tratadas conforme a legislação, acordo interno e convenção coletiva aplicável.
 
 P: Como compensar horas negativas?
-R: Trabalhando até 1h extra por dia e no máximo 4h por semana.
+R: As horas negativas devem ser compensadas conforme orientação do gestor e regras da empresa.
+A compensação pode ser feita trabalhando até 1 hora a mais por dia, respeitando o limite de 4 horas por semana.
+Toda compensação deve ser alinhada previamente com o gestor e registrada corretamente no ponto.
 
 P: Posso usar horas positivas para sair mais cedo?
-R: Sim, mas precisa combinar previamente com o gestor direto.
+R: Sim. O colaborador pode usar horas positivas do banco de horas para sair mais cedo, desde que combine previamente com o gestor direto.
+A saída antecipada deve ser autorizada antes de acontecer e registrada corretamente no ponto.
+Caso a saída não seja alinhada previamente, ela poderá ser tratada como ausência não justificada.
 
 P: Trabalhei em feriado — as horas vão para o banco?
-R: Não. Feriado trabalhado é pago em dobro (100% a mais) e não pode ser
-   compensado em banco de horas.
+R: Não. As horas trabalhadas em feriado não entram no banco de horas como regra comum.
+Quando houver trabalho em feriado autorizado pela empresa, as horas serão tratadas conforme a legislação, a convenção coletiva aplicável e a orientação do Departamento Pessoal.
+Na Sucré, o feriado trabalhado é pago com adicional de 100%, quando não houver outra forma de compensação legalmente válida.
+
+P: Posso usar horas positivas para sair mais cedo?
+R: Sim. O colaborador pode usar horas positivas do banco de horas para sair mais cedo, desde que solicite autorização ao gestor direto com, no mínimo, 48 horas de antecedência.
+A saída antecipada só poderá acontecer após aprovação do gestor e deve ser registrada corretamente no ponto.
+Caso a saída não seja comunicada e autorizada previamente, ela poderá ser tratada como ausência não justificada.
 
 
 ──────────────────────────────────────────────────────
@@ -170,21 +226,34 @@ R: Não. Feriado trabalhado é pago em dobro (100% a mais) e não pode ser
 ──────────────────────────────────────────────────────
 
 P: Quando saberei minhas férias?
-R: A programação de férias é feita em dezembro para o ano seguinte. As datas
-   podem ser alteradas conforme necessidade da empresa.
+R: A programação de férias é feita, preferencialmente, em dezembro, para organização do ano seguinte.
+As datas são definidas considerando o período aquisitivo do colaborador, a programação da área e a necessidade da empresa.
+Caso seja necessário, a programação poderá ser ajustada pela empresa, respeitando os prazos legais de comunicação e pagamento das férias.
 
 P: Quando recebo o pagamento das férias?
-R: Até 48 horas antes do início das férias (sábados contam como dia útil).
+R: O pagamento das férias é realizado até 2 dias antes do início do período de férias, conforme prazo previsto na CLT.
+Quando o prazo cair em fim de semana ou feriado, a empresa poderá antecipar o pagamento para garantir que o crédito seja realizado dentro do prazo legal.
+O valor inclui a remuneração das férias acrescida de 1/3 constitucional, com os descontos legais aplicáveis.
 
 P: Como assino o aviso e recibo de férias?
-R: Os documentos chegam por e-mail via Caju/Click Sign para assinatura digital.
-   Não é necessário ir à empresa.
+R: O aviso e o recibo de férias são enviados para assinatura digital por e-mail, via plataforma Caju/Clicksign.
+Ao receber o e-mail, o colaborador deve acessar o link e concluir a assinatura dos documentos.
+Na maioria dos casos, não é necessário comparecer à empresa apenas para assinar. Caso seja necessário algum procedimento presencial, o colaborador será informado pelo Departamento Pessoal.
 
 P: Posso fracionar as férias?
-R: Sim, em até 3 períodos.
+R: Sim. Pela legislação, as férias podem ser divididas em até 3 períodos, desde que haja concordância entre o colaborador e a empresa.
+Um dos períodos deve ter, no mínimo, 14 dias corridos, e os demais não podem ser menores que 5 dias corridos cada.
+Na Sucré, prezamos que as férias sejam usufruídas, preferencialmente, em período completo, para favorecer o descanso do colaborador e facilitar a organização das áreas.
+Caso haja necessidade de fracionamento, a solicitação será analisada conforme a legislação, a programação da área e a aprovação da empresa.
 
 P: Quantos dias de férias terei se tiver faltas?
-R: Até 5 faltas → 30 dias | 6 a 14 → 24 dias | 15 a 23 → 18 dias | 24 a 32 → 12 dias.
+R: A quantidade de dias de férias pode ser reduzida quando o colaborador tiver faltas injustificadas durante o período aquisitivo.
+A regra é:
+Até 5 faltas injustificadas: 30 dias de férias
+De 6 a 14 faltas injustificadas: 24 dias de férias
+De 15 a 23 faltas injustificadas: 18 dias de férias
+De 24 a 32 faltas injustificadas: 12 dias de férias
+Faltas justificadas, abonadas ou legalmente previstas não reduzem os dias de férias.
 
 
 ──────────────────────────────────────────────────────
@@ -192,18 +261,21 @@ R: Até 5 faltas → 30 dias | 6 a 14 → 24 dias | 15 a 23 → 18 dias | 24 a 3
 ──────────────────────────────────────────────────────
 
 P: Nasceu meu filho — quantos dias tenho de licença?
-R: Licença paternidade estendida: 20 dias corridos.
-   Enviar comprovante de nascimento ao DP e posteriormente a Certidão de Nascimento.
+R: R: A licença-paternidade na Sucré é de 20 dias corridos, por sermos aderentes ao Programa Empresa Cidadã.
+O colaborador deve comunicar o gestor e enviar ao Departamento Pessoal o comprovante de nascimento. Depois, também deverá enviar a certidão de nascimento.
 
 P: Quantos dias tenho no caso de falecimento na família?
-R: 2 dias corridos para falecimento de cônjuge, pais, filhos, irmãos ou pessoa
-   declarada na carteira de trabalho.
+R: Em caso de falecimento de familiar, o colaborador tem direito a 2 dias consecutivos de licença, sem prejuízo do salário.
+A licença se aplica em caso de falecimento de cônjuge, pais, avós, filhos, netos, irmãos ou pessoa que viva sob dependência econômica do colaborador, desde que declarada em sua carteira de trabalho.
+O colaborador deve comunicar o gestor e enviar o comprovante ao Departamento Pessoal.
 
 P: Quantos dias de licença para casamento?
-R: 3 dias corridos para casamento civil.
+R: Em caso de casamento civil, o colaborador tem direito a 3 dias consecutivos de licença, sem prejuízo do salário.
+O colaborador deve comunicar o gestor com antecedência e enviar a certidão de casamento ao Departamento Pessoal.
 
 P: Qual a duração da licença maternidade?
-R: 180 dias (licença maternidade estendida).
+R: A licença-maternidade na Sucré é de 180 dias, por sermos aderentes ao Programa Empresa Cidadã.
+A colaboradora deve comunicar o gestor e enviar ao Departamento Pessoal a documentação necessária para registro e acompanhamento da licença.
 
 
 ──────────────────────────────────────────────────────
@@ -211,39 +283,65 @@ R: 180 dias (licença maternidade estendida).
 ──────────────────────────────────────────────────────
 
 P: Quando posso aderir ao plano de saúde?
-R: Solicitar ao DP até o dia 10 de cada mês. O plano começa a vigorar no mês seguinte.
-   Disponível após 90 dias de vínculo empregatício.
+R: O colaborador pode solicitar adesão ao plano de saúde após completar 90 dias de vínculo empregatício, ou seja, após o período de experiência.
+A adesão não é automática. Para aderir, é necessário solicitar ao Departamento Pessoal até o dia 10 de cada mês e assinar a documentação obrigatória.
+Após a solicitação e assinatura dos documentos, o plano passa a vigorar no mês seguinte, conforme prazo da operadora.
 
 P: Quanto custa o plano para o colaborador?
-R: A empresa custeia 50% do plano titular (Unimed Essencial Max).
-   O valor varia conforme a idade do colaborador.
+R: A empresa custeia 50% do valor do plano de saúde do titular, seja na opção Unimed Essencial Max ou Hapvida.
+O colaborador paga os outros 50%, e o valor pode variar conforme a idade e a tabela vigente da operadora.
+Na opção Unimed, há coparticipação de 30%, que é custeada integralmente pelo colaborador.
+Na opção Hapvida, não há coparticipação.
+As carências e condições de utilização seguem as regras de cada operadora.
 
 P: Posso incluir meus filhos e cônjuge no plano?
-R: Sim. Para dependentes, o colaborador paga 100% do valor adicional.
-   Documentos necessários: RG, CPF, Certidão de Nascimento (filhos), Declaração Escolar.
+R: Sim. O colaborador pode solicitar a inclusão de dependentes no plano de saúde, conforme as regras da operadora.
+Podem ser incluídos apenas filhos e cônjuge, mediante comprovação do vínculo.
+Para dependentes, o colaborador assume 100% do valor adicional do plano.
+Os documentos necessários são:
+Filhos: RG, CPF, certidão de nascimento e, quando aplicável, declaração escolar.
+Cônjuge: RG, CPF e certidão de casamento ou documento que comprove união estável.
+A inclusão deve ser solicitada ao Departamento Pessoal, que orientará sobre os documentos e prazos da operadora.
 
 P: Como uso o plano para urgência e emergência?
-R: Não precisa marcar consulta. Basta procurar a clínica credenciada mais próxima.
-   Para localizar clínicas: app "Minha Unimed" (laranja) ou "Cliente Unimed Fortaleza" (verde).
+R: Em caso de urgência ou emergência, não é necessário marcar consulta.
+O colaborador deve procurar uma unidade credenciada que realize atendimento de urgência ou emergência, conforme o seu plano.
+Para localizar a unidade mais próxima, consulte a rede credenciada pelo aplicativo da operadora:
+Unimed: aplicativo Minha Unimed ou Cliente Unimed Fortaleza.
+Hapvida: aplicativo ou canais oficiais da Hapvida.
+No aplicativo, busque por hospitais, clínicas ou pronto atendimentos disponíveis para o seu plano antes de se deslocar, sempre que possível.
 
 P: Se eu cancelar o plano, posso reativar quando quiser?
-R: Não. Após o cancelamento, precisa esperar 3 meses para reativar.
-   Para cancelar: assinar ficha de exclusão no DP.
+R: Não. Após o cancelamento do plano de saúde, o colaborador deverá aguardar o prazo de 3 meses para solicitar nova adesão.
+Para cancelar, é necessário solicitar ao Gente & Gestão/Departamento Pessoal até o dia 10 de cada mês e assinar a documentação de exclusão.
+Caso o dia 10 caia em final de semana ou feriado, a solicitação deve ser antecipada para o dia útil anterior, dentro do horário de expediente do setor.
+O cancelamento não é automático. Informar o cancelamento apenas por WhatsApp, sem assinar os documentos necessários, não conclui o processo.
+Enquanto o cancelamento não for formalizado, o plano permanece ativo e os descontos continuarão sendo realizados normalmente em folha.
 
 P: A empresa tem mais de um plano de saúde?
-R: Sim. Plano padrão: Unimed Essencial Max (empresa paga 50%).
-   Também há o Hapvida como segunda opção.
+R: Sim. A empresa disponibiliza duas opções de plano de saúde para o colaborador: Unimed Fortaleza Essencial Max e Hapvida.
+Unimed Fortaleza Essencial Max
+É o plano padrão oferecido pela empresa. A Sucré custeia 50% do valor do plano titular e o colaborador paga os outros 50%.
+Esse plano possui coparticipação de 30%, que é paga integralmente pelo colaborador quando houver utilização de serviços cobertos pela operadora.
+Hapvida
+É a segunda opção de plano disponível. A Sucré também custeia 50% do valor do plano titular e o colaborador paga os outros 50%.
+Esse plano não possui coparticipação.
 
+Em ambos os planos, o valor pode variar conforme a idade do colaborador e a tabela vigente da operadora. As carências, rede de atendimento e regras de utilização seguem as condições de cada plano.
 
 ──────────────────────────────────────────────────────
 11. SALÁRIO FAMÍLIA
 ──────────────────────────────────────────────────────
 
 P: Tenho filhos — tenho direito ao salário família?
-R: Sim. Envie os documentos dos filhos ao DP para cadastro:
-   Certidão de Nascimento, CPF, Carteira de Vacinação e Declaração Escolar.
-   (RG não é obrigatório para crianças pequenas.)
-   O benefício passa a constar na próxima folha após o cadastro.
+R: Depende. O salário-família é um benefício previsto em lei para colaboradores que tenham filhos ou dependentes de até 14 anos de idade, ou inválidos de qualquer idade, desde que atendam aos critérios legais.
+Para ter direito, o colaborador também precisa estar dentro do limite de remuneração definido pelo INSS.
+Em 2026, o salário-família é devido ao colaborador com remuneração mensal de até R$ 1.980,38. O valor da cota é de R$ 67,54 por filho/dependente elegível.
+Caso o benefício não tenha sido solicitado na admissão, o colaborador deve enviar a documentação ao Departamento Pessoal até o dia 20 de cada mês, para análise e inclusão na folha do mês seguinte.
+Documentos necessários:
+Certidão de nascimento, CPF do dependente, carteira de vacinação, quando aplicável, e declaração escolar, quando aplicável.
+O RG não é obrigatório para crianças pequenas.
+Após a entrega e validação dos documentos, se o colaborador atender aos critérios legais, o benefício será incluído na folha do mês seguinte.
 
 
 ──────────────────────────────────────────────────────
@@ -251,38 +349,31 @@ R: Sim. Envie os documentos dos filhos ao DP para cadastro:
 ──────────────────────────────────────────────────────
 
 P: Como acesso meu contracheque?
-R: Pelo aplicativo Caju. Em caso de dificuldade, o DP pode enviar pelo WhatsApp.
-
-P: Não consigo acessar o Caju — o que faço?
-R: Contate o suporte do Caju:
-   WhatsApp: (11) 4118-3826
-   E-mail: oi@caju.com.br
-   Ou solicite ao DP para atualizar seus dados de acesso.
+O colaborador recebe um e-mail com as informações de acesso. Caso ainda não tenha cadastro, será necessário realizar o cadastro no aplicativo para consultar o contracheque.
+Se houver dificuldade de acesso ou algum imprevisto, o colaborador pode procurar o Departamento Pessoal para suporte.
+Em situações específicas, o DP poderá enviar o contracheque pelo WhatsApp do colaborador cadastrado.
 
 
 ──────────────────────────────────────────────────────
 13. ASO / EXAME OCUPACIONAL
 ──────────────────────────────────────────────────────
 
-P: Onde realizo o exame admissional/demissional/periódico?
-R: Clínica Quality — Rod. Dr. Mendel Steinbruch, 10293, sala 3335
-   (Pátio Pajuçara), Maracanaú.
-   Horário: a partir das 07h, por ordem de chegada (apenas pela manhã).
-   Levar documento com foto e a guia emitida pelo DP.
-
 P: Preciso fazer algum exame antes de retornar de afastamento?
-R: Sim. Obter atestado médico de aptidão → DP solicita guia do ASO de retorno →
-   só retorna ao trabalho após resultado favorável.
-
+R: Sim, quando o afastamento exigir exame de retorno ao trabalho.
+Antes de retornar às atividades, o colaborador deve apresentar ao Departamento Pessoal o documento médico ou previdenciário que comprove a liberação para retorno.
+Após isso, o DP solicitará a guia para realização do ASO de Retorno ao Trabalho.
+O colaborador só poderá retornar às atividades após realizar o exame ocupacional e receber resultado apto.
 
 ──────────────────────────────────────────────────────
 14. AFASTAMENTO / INSS
 ──────────────────────────────────────────────────────
 
 P: Precisei me afastar por cirurgia — como funciona com o INSS?
-R: A empresa prepara o requerimento para abertura do benefício.
-   O DP envia o PDF por WhatsApp e o colaborador leva ao INSS para dar entrada.
-   Durante o afastamento, a remuneração é responsabilidade do INSS.
+R: Quando o afastamento médico for superior a 15 dias, o colaborador poderá precisar solicitar o benefício por incapacidade temporária junto ao INSS.
+A empresa é responsável pelos primeiros 15 dias de afastamento, conforme análise do atestado. A partir do 16º dia, se o afastamento for aprovado, a remuneração passa a ser de responsabilidade do INSS.
+O Departamento Pessoal irá orientar o colaborador e preparar os documentos necessários para o requerimento, quando aplicável.
+O colaborador receberá a documentação e deverá solicitar o benefício pelo Meu INSS, aplicativo ou site, acompanhando o andamento diretamente pelos canais do INSS.
+Durante o afastamento previdenciário, o colaborador deve manter o Departamento Pessoal informado sobre a situação do benefício, perícia, resultado e previsão de retorno.
 
 
 ──────────────────────────────────────────────────────
@@ -290,13 +381,15 @@ R: A empresa prepara o requerimento para abertura do benefício.
 ──────────────────────────────────────────────────────
 
 P: O que é o desconto de "Contribuição Sindical Laboral"?
-R: É a contribuição ao Sindipan de Maracanaú, que fornece a Convenção Coletiva,
-   assistência jurídica e realiza eventos para os colaboradores.
-   Valor: equivalente a um dia de salário.
+R: É uma contribuição prevista na Convenção Coletiva de Trabalho da categoria, destinada ao sindicato laboral.
+Essa contribuição ajuda a custear a atuação do sindicato nas negociações coletivas, como reajuste salarial, benefícios e demais cláusulas da convenção.
+O valor e a forma de desconto seguem o que estiver previsto na Convenção Coletiva vigente.
 
 P: Sou obrigado a pagar a contribuição sindical?
-R: Não. Quem não quiser pagar deve assinar o termo de oposição ao desconto.
-   O DP envia o documento por e-mail para assinatura digital.
+R: O desconto pode ocorrer quando estiver previsto na Convenção Coletiva de Trabalho da categoria.
+No entanto, o colaborador tem direito de se opor ao desconto, conforme prazo e procedimento definidos na própria Convenção Coletiva.
+Quem não quiser autorizar o desconto deve assinar o termo de oposição dentro do prazo informado. O documento será enviado pelo Departamento Pessoal para assinatura digital.
+Caso o colaborador não manifeste oposição dentro do prazo, o desconto poderá ocorrer conforme previsão da Convenção Coletiva vigente.
 
 
 ──────────────────────────────────────────────────────
@@ -304,27 +397,39 @@ R: Não. Quem não quiser pagar deve assinar o termo de oposição ao desconto.
 ──────────────────────────────────────────────────────
 
 P: Como atualizo meu endereço na empresa?
-R: Enviar comprovante de residência no nome do colaborador (conta de água, energia
-   ou internet). Após validação, a contabilidade atualiza no e-Social e o colaborador
-   assina ficha eletrônica via Caju/Click Sign.
-   Sem comprovante no próprio nome, a atualização não pode ser realizada.
-
+R: Para atualizar o endereço, o colaborador deve enviar ao Departamento Pessoal um comprovante de residência atualizado em seu nome, como conta de água, energia ou internet.
+Após a validação do documento, a contabilidade fará a atualização no eSocial e o colaborador assinará a ficha cadastral eletrônica pela plataforma Caju/Clicksign.
+Sem o envio do comprovante de residência em nome do colaborador, a atualização não poderá ser realizada.
+Em caso de dúvidas sobre o documento aceito, procure o Departamento Pessoal antes de enviar.
 
 ──────────────────────────────────────────────────────
 17. CRACHÁ
 ──────────────────────────────────────────────────────
 
 P: Meu crachá está danificado — como solicito um novo?
-R: Solicitar ao DP. Custo aproximado de R$8,00.
-   É necessário fornecer uma foto para confecção.
-
+R: O colaborador deve solicitar a segunda via do crachá ao Departamento Pessoal.
+Para a confecção, será necessário enviar uma foto atualizada, conforme orientação do DP.
+O custo aproximado da segunda via é de R$ 8,00 e poderá ser repassado ao colaborador, conforme análise do motivo da substituição e regra interna da empresa.
 
 ──────────────────────────────────────────────────────
 18. CONTRATO DE EXPERIÊNCIA
 ──────────────────────────────────────────────────────
 
 P: Quanto tempo dura o contrato de experiência?
-R: 45 dias, podendo ser prorrogado por mais 45 dias (máximo de 90 dias no total).
-   Ao final, é feita uma avaliação para decisão de efetivação.
+R: O contrato de experiência tem duração inicial de 45 dias e pode ser prorrogado uma única vez por mais 45 dias, totalizando no máximo 90 dias.
+Ao final do período de experiência, a empresa realiza uma avaliação para decidir sobre a continuidade do contrato por prazo indeterminado.
+Durante esse período, o colaborador também deve avaliar sua adaptação à função, à rotina e à empresa.
 
 
+──────────────────────────────────────────────────────
+19. AUSÊNCIAS
+──────────────────────────────────────────────────────
+P: Saí mais cedo por motivo pessoal. Como fica meu ponto?
+R: A saída antecipada deve ser informada e alinhada previamente com o gestor.
+Quando houver saldo positivo no banco de horas, o colaborador poderá solicitar a compensação, desde que autorizada pelo gestor.
+Caso não haja autorização, justificativa aceita ou saldo disponível, as horas não trabalhadas poderão gerar banco de horas negativo ou desconto, conforme regra da empresa.
+
+P: Preciso sair para resolver assunto familiar. A ausência será abonada?
+R: Depende do motivo e do documento apresentado.
+Algumas ausências são previstas em lei, convenção coletiva ou regra interna da empresa. Outras situações podem ser justificadas, mas não necessariamente abonadas.
+Sempre que precisar se ausentar, comunique o gestor com antecedência mínima de 48h e envie a documentação ao Departamento Pessoal, quando houver.

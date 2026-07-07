@@ -2,3 +2,5 @@
 CONVERSAS A IMPORTAR/
 MANUAL DO COLABORADOR*.docx
 .env*
+node_modules
+scripts/senhas.csv

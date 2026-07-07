@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -290,19 +290,37 @@
 <body>
 
 
-<!-- TELA DE LOGIN POR MATRÍCULA -->
+<!-- TELA DE LOGIN POR MATRÍCULA + SENHA -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo" id="login-logo">
       <img src="SELO.png" alt="Sucré" onerror="this.parentElement.innerHTML='<span class=\'login-logo-fallback\'>Sucré</span>'" />
     </div>
     <h2>Olá! Sou a Ana 👋</h2>
-    <p>Digite sua matrícula para acessar o assistente de RH da Sucré</p>
-    <input type="text" id="matricula-input" placeholder="Ex: 661 ou PJ14"
-           maxlength="10" autocomplete="off"
+    <p>Entre com sua matrícula e senha para acessar o assistente de RH da Sucré</p>
+    <input type="text" id="matricula-input" placeholder="Matrícula (ex: 661 ou PJ14)"
+           maxlength="10" autocomplete="username"
+           onkeydown="if(event.key==='Enter') document.getElementById('senha-input').focus()" />
+    <input type="password" id="senha-input" placeholder="Senha" autocomplete="current-password"
+           style="letter-spacing:normal;margin-top:12px"
            onkeydown="if(event.key==='Enter') doLogin()" />
     <div class="login-error" id="login-error"></div>
     <button class="login-btn" onclick="doLogin()">Entrar</button>
+  </div>
+</div>
+
+<!-- TELA DE TROCA DE SENHA (primeiro acesso) -->
+<div id="change-screen" style="display:none;position:fixed;inset:0;background:var(--white);align-items:center;justify-content:center;padding:24px;z-index:250">
+  <div class="login-card">
+    <h2>Crie sua senha 🔒</h2>
+    <p>Este é seu primeiro acesso. Defina uma nova senha pessoal para continuar.</p>
+    <input type="password" id="new-pass" placeholder="Nova senha (mín. 6 caracteres)"
+           style="letter-spacing:normal" autocomplete="new-password" />
+    <input type="password" id="new-pass2" placeholder="Confirme a nova senha"
+           style="letter-spacing:normal;margin-top:12px" autocomplete="new-password"
+           onkeydown="if(event.key==='Enter') doChangePassword()" />
+    <div class="login-error" id="change-error"></div>
+    <button class="login-btn" onclick="doChangePassword()">Salvar e entrar</button>
   </div>
 </div>
 
@@ -355,64 +373,20 @@
   </button>
 </form>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// ── BASE DE COLABORADORES ──────────────────────────────────────────────────
-const COLABORADORES = {
-  "661":"BIANCA DO NASCIMENTO DINIZ","676":"MARIA CLARA GIRAO DA SILVA",
-  "657":"ANA CAROLINE SAMPAIO SILVESTRE","230":"INACIA ALINE ALVES DE LIMA",
-  "669":"CAROLINE BATISTA ANDRADE","671":"ERIKA THAMIRES DE OLIVEIRA SANTOS",
-  "173":"ANTONIA MARIA BARBOSA FARIAS","643":"MYCALL DE OLIVEIRA ALVES",
-  "658":"ANTONIA VANESSA SOUSA BARBOSA BATISTA","598":"LARA HELEN VIDAL ARAUJO",
-  "646":"ANTONIA MARCIANE ALVES DA SILVA","328":"ANTONIO MARCOS OLIVEIRA DO NASCIMENTO",
-  "666":"ANTONIO SANDRO MOURA GARCIA","660":"CAIO ENDEL MACIEL DA COSTA MELO",
-  "667":"RAIANNE MAIRA CRUZ DO NASCIMENTO","PJ14":"LUANA MAYRA PESSOA",
-  "593":"NIQUERLIS ROCHELLE DE SOUZA SILVA","555":"CLAUDIANA DE OLIVEIRA SILVA",
-  "547":"CICERA CARLA DE OLIVEIRA RODRIGUES","597":"RONALD ESTENIO DA SILVA BEZERRA",
-  "293":"DAIANE NASCIMENTO DE SOUSA","PJ22":"FRANCISCO RODRIGO VERAS RODRIGUES",
-  "599":"MARIA CLEONICE CECILIO GONZAGA","526":"CLEITON SILVA DE SOUZA",
-  "610":"FRANCISCO CESAR RODRIGUES SOUSA SANTOS","651":"FABIO VIEIRA VASCONCELOS",
-  "PJ24":"KEDMA CYDIA DA SILVA FELIX","PJ25":"GLAUBERTO LADERLAC RIBEIRO LOURENCO",
-  "PJ26":"CANDIDO MEDEIROS LINHARES","363":"KAHENA SENA HOLANDA",
-  "664":"SULAMITA NOGUEIRA SILVA","638":"FRANCISCA SOARES BARBOSA",
-  "613":"FRANCISCA ELANE MARTINS DE SOUZA","624":"ISRAEL ALVES LEITE",
-  "524":"FRANCISCO ANTONIO DE ALMEIDA","485":"MARIA GLEICIANE CAETANO",
-  "633":"CICERO JONAS GONCALVES LIMA","675":"FRANCISCO VALDINAR SOARES TEIXEIRA",
-  "494":"FRANCISCO CARLOS DO NASCIMENTO","530":"FRANCISCO GOMES MOURA",
-  "618":"ITALO DAVID ALMEIDA MATOS","668":"SAMYRA FERREIRA DE SOUSA",
-  "615":"LUCYNARA FERNANDES PEREIRA","175":"ROZELIA DE FREITAS SOUSA DE ANDRADE",
-  "674":"LARICE ALCANTARA DA SILVA","122":"DANIELLA GONCALVES DO CARMO",
-  "617":"MARIA RAFAELLY MOURA DE AMORIM VASCONCELOS","419":"JEAN LIMA DE OLIVEIRA",
-  "648":"JOSE LOPES DOS SANTOS JUNIOR","673":"JOSE NILTON DE OLIVEIRA ARRUDA",
-  "585":"NATALIA EVANGELISTA BRAZ","579":"ANTONIA CHEILANE DOS SANTOS",
-  "441":"RENATA ARAUJO SOTERO BORGES","636":"RENAN LUCAS BRUNO ALMEIDA",
-  "642":"JOSEMAR SANTOS DE PAIVA","637":"EMANUELE CRISTINA PEREIRA DE ALMEIDA",
-  "17":"FABIO MELO","558":"LUCILENE COSTA DE SOUSA",
-  "546":"TAINA PAMELA LOBO MENDES","1":"LIA VIEIRA QUINDERE",
-  "188":"MARIA DA GLORIA NUNES DE SOUZA","445":"FRANCISCA GRAZIELE NUNES DA SILVA DE SOUZA",
-  "297":"ROSINEIDE ALVES DA SILVA","580":"SIMARA ANDRE MATOS",
-  "640":"RAFAEL DA SILVA DUARTE","653":"RAFAEL DA SILVA FERREIRA",
-  "PJ03":"LIDIANE DE MELO SILVA","522":"REGIVALDO FERREIRA DA SILVA",
-  "605":"JOYCIANE DE SOUZA SANTIAGO","294":"LEONARDO RAIMUNDO DA SILVA",
-  "525":"SEBASTIAO FELIX DOS SANTOS JUNIOR","145":"ANA PAULA DA SILVA FERNANDES",
-  "264":"TRACYANE SILVA DE LIMA","645":"ELISABETH SALGADO DO NASCIMENTO",
-  "659":"RAFAEL RIBEIRO","249":"JOSE TARCISIO COELHO",
-  "665":"GISLANIA SOARES FERREIRA","316":"MARIA DIANA AGUIAR VIANA",
-  "663":"MARIA VANIA ASSIS DE SOUSA","461":"ISMAEL MARQUES DA SILVA",
-  "270":"ANTONIA KIANY BRAZ DE FREITAS","670":"ALISANDRA DOS SANTOS SILVA",
-  "PJ21":"JULIA SILVA DOS SANTOS","662":"TAMIRES KELIANE DE SOUSA MUNIZ",
-  "632":"MAIRTON DAS CHAGAS DE OLIVEIRA","302":"FRANCISCO VALDIR CORDEIRO DA SILVA",
-  "641":"HEITOR DE CARVALHO FERREIRA","469":"JOANE RIBEIRO BARRETO",
-  "426":"MICHAEL DOUGLAS OLIVEIRA DO NASCIMENTO","672":"ERIKSON BRUNO MENEZES DE MOURA",
-  "635":"MARIA GABRIELA DA SILVA OLIVEIRA","604":"MARDRISSON COSTA FREITAS",
-  "440":"ELENICE LIMA DA SILVA PESSOTI","573":"RONALDO DO NASCIMENTO MARQUES",
-  "150":"SAMIA MARA SAMPAIO DE MORAIS","647":"LUNA KETLEY FERREIRA DE OLIVEIRA",
-  "PJ12":"VANESSA LOUREIRO BENIGNO","607":"FRANCISCO BEZERRA GOMES",
-  "253":"VALDENIZA MARIA LOPES RABELO","562":"ANTONIA DE OLIVEIRA GOMES",
-  "528":"ERIDON DE MATOS GOMES","557":"MARIA LIDUINA DO NASCIMENTO MOURA",
-  "510":"STHEFANY MIKELLY VIEIRA PORTELA","29":"FRANCISCO JOSE RODRIGUES DE SOUSA FILHO",
-  "678":"JADE SILVA DO NASCIMENTO","627":"LAIS HADASSA BATISTA CAVALCANTE",
-  "PJ23":"PEDRO FLAVIO FILOMENO JUNIOR","427":"EVILENE PEREIRA SOUZA"
-};
+// ── (lista de colaboradores agora vive no Supabase, protegida por RLS) ──
+
+// ── SUPABASE ──────────────────────────────────────────────────────────────
+let sb = null;
+const supabaseReady = fetch('/api/config')
+  .then(r => r.json())
+  .then(cfg => { sb = window.supabase.createClient(cfg.url, cfg.anonKey); });
+
+// Mesmo formato de e-mail usado no script de criação de usuários.
+function matriculaToEmail(m) {
+  return m.toUpperCase().replace(/[^A-Z0-9]/g, '').toLowerCase() + '@sucre-faq.interno';
+}
 
 // ── SISTEMA PROMPT gerenciado pelo backend (api/chat.js) ─────────────────
 
@@ -427,34 +401,82 @@ const quickWrap  = document.getElementById('quick-wrap');
 let history      = [];
 let currentUser  = null;
 
-// ── LOGIN POR MATRÍCULA ───────────────────────────────────────────────────
-function doLogin() {
-  const raw = document.getElementById('matricula-input').value.trim().toUpperCase();
+// ── LOGIN POR MATRÍCULA + SENHA (Supabase Auth) ───────────────────────────
+async function doLogin() {
+  const raw   = document.getElementById('matricula-input').value.trim();
+  const senha = document.getElementById('senha-input').value;
   const errEl = document.getElementById('login-error');
   const inpEl = document.getElementById('matricula-input');
+  const btn   = document.querySelector('#login-screen .login-btn');
+  errEl.textContent = '';
 
-  if (!raw) { errEl.textContent = 'Digite sua matrícula.'; inpEl.classList.add('error'); return; }
-
-  // Aceita tanto "14" quanto "PJ14"
-  const chave = COLABORADORES[raw] ? raw : (COLABORADORES['PJ' + raw] ? 'PJ' + raw : null);
-  const nome  = chave ? COLABORADORES[chave] : null;
-
-  if (!nome) {
-    errEl.textContent = 'Matrícula não encontrada. Verifique e tente novamente.';
+  if (!raw || !senha) {
+    errEl.textContent = 'Informe matrícula e senha.';
     inpEl.classList.add('error');
     setTimeout(() => inpEl.classList.remove('error'), 600);
     return;
   }
 
-  currentUser = { matricula: chave, nome };
+  btn.disabled = true; btn.textContent = 'Entrando...';
+  try {
+    await supabaseReady;
+    const { data, error } = await sb.auth.signInWithPassword({
+      email: matriculaToEmail(raw), password: senha
+    });
+
+    if (error) {
+      errEl.textContent = 'Matrícula ou senha incorreta.';
+      inpEl.classList.add('error');
+      setTimeout(() => inpEl.classList.remove('error'), 600);
+      return;
+    }
+
+    if (data.user.user_metadata?.must_change_password) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('change-screen').style.display = 'flex';
+      return;
+    }
+
+    entrarNoChat(data.user);
+  } catch {
+    errEl.textContent = 'Não foi possível conectar. Tente novamente.';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Entrar';
+  }
+}
+
+// Troca de senha no primeiro acesso.
+async function doChangePassword() {
+  const p1  = document.getElementById('new-pass').value;
+  const p2  = document.getElementById('new-pass2').value;
+  const err = document.getElementById('change-error');
+  err.textContent = '';
+
+  if (p1.length < 6) { err.textContent = 'A senha deve ter pelo menos 6 caracteres.'; return; }
+  if (p1 !== p2)     { err.textContent = 'As senhas não coincidem.'; return; }
+
+  const { data, error } = await sb.auth.updateUser({
+    password: p1, data: { must_change_password: false }
+  });
+  if (error) { err.textContent = 'Não foi possível salvar. Tente novamente.'; return; }
+
+  document.getElementById('change-screen').style.display = 'none';
+  entrarNoChat(data.user);
+}
+
+function entrarNoChat(user) {
+  const nome      = user.user_metadata?.nome || 'Colaborador';
+  const matricula = user.user_metadata?.matricula || '';
+  currentUser = { matricula, nome };
+
   document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('header-sub').textContent = `Assistente de RH · Matrícula ${chave}`;
+  document.getElementById('header-sub').textContent = `Assistente de RH · Matrícula ${matricula}`;
   sendBtn.disabled = false;
 
   const primeiroNome = nome.split(' ')[0];
-  primeiroNome_capitalizado = primeiroNome.charAt(0) + primeiroNome.slice(1).toLowerCase();
+  const primeiroNomeCap = primeiroNome.charAt(0) + primeiroNome.slice(1).toLowerCase();
 
-  addBotMsg(`Olá, ${primeiroNome_capitalizado}! 😊\n\nSou a Ana, sua assistente de RH da Sucré. Estou aqui para ajudar com dúvidas sobre benefícios, ponto, férias, licenças e pagamentos.\n\nComo posso te ajudar hoje?`);
+  addBotMsg(`Olá, ${primeiroNomeCap}! 😊\n\nSou a Ana, sua assistente de RH da Sucré. Estou aqui para ajudar com dúvidas sobre benefícios, ponto, férias, licenças e pagamentos.\n\nComo posso te ajudar hoje?`);
 }
 
 // ── MENSAGENS ─────────────────────────────────────────────────────────────
@@ -488,7 +510,11 @@ function esc(t) {
   return t
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\n/g,'<br>')
-    .replace(/(https?:\/\/[^\s<&]+)/g,'<a href="$1" target="_blank" style="color:var(--red);word-break:break-all;">Clique aqui para falar com o Departamento Pessoal</a>');
+    .replace(/(https?:\/\/[^\s<&]+)/g, (url) => {
+      const isDP = url.includes('wa.me/5585997153774');
+      const label = isDP ? 'Clique aqui para falar com o Departamento Pessoal' : url;
+      return `<a href="${url}" target="_blank" style="color:var(--red);word-break:break-all;">${label}</a>`;
+    });
 }
 
 // ── ENVIO ─────────────────────────────────────────────────────────────────
@@ -504,16 +530,21 @@ async function sendMessage(text) {
   showTyping();
 
   try {
+    const { data: { session } } = await sb.auth.getSession();
     const res = await fetch('/api/chat', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${session?.access_token || ''}`
+      },
       body: JSON.stringify({ messages: history })
     });
     const data = await res.json();
     removeTyping();
 
     if (!res.ok) {
-      addBotMsg('Ocorreu um erro. Tente novamente.');
+      const msg = data?.error?.message || 'Ocorreu um erro. Tente novamente.';
+      addBotMsg(msg);
       sendBtn.disabled = false; return;
     }
 
