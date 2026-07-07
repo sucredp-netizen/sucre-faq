@@ -445,13 +445,15 @@ function semResposta() {
 }
 
 // Encontra a resposta mais parecida com a pergunta do colaborador.
+// Retorna { texto, categoria, encontrou, tipo }.
 function responder(pergunta) {
   if (ehSaudacao(pergunta)) {
-    return 'Oi! 😊 Como posso te ajudar? Você pode perguntar sobre salário, vale transporte, vale alimentação, ponto, férias, licenças, plano de saúde e muito mais — é só escolher um atalho ou escrever sua dúvida.';
+    return { tipo: 'saudacao', encontrou: true, categoria: null,
+      texto: 'Oi! 😊 Como posso te ajudar? Você pode perguntar sobre salário, vale transporte, vale alimentação, ponto, férias, licenças, plano de saúde e muito mais — é só escolher um atalho ou escrever sua dúvida.' };
   }
 
   const q = [...new Set(tokens(pergunta))];
-  if (!q.length || !FAQ.length) return semResposta();
+  if (!q.length || !FAQ.length) return { tipo: 'faq', encontrou: false, categoria: null, texto: semResposta() };
 
   let melhor = null, melhorForca = 0, melhorAcertosP = 0;
   for (const item of FAQ) {
@@ -472,7 +474,26 @@ function responder(pergunta) {
 
   // Aceita quando há força suficiente, ou quando bate a pergunta numa consulta curta.
   const bomMatch = melhorForca >= 2 || (melhorAcertosP >= 1 && q.length <= 2);
-  return (melhor && bomMatch) ? melhor.resposta : semResposta();
+  if (melhor && bomMatch) {
+    return { tipo: 'faq', encontrou: true, categoria: melhor.categoria, texto: melhor.resposta };
+  }
+  return { tipo: 'faq', encontrou: false, categoria: null, texto: semResposta() };
+}
+
+// Registra o atendimento no Supabase (não bloqueia a resposta ao usuário).
+async function registrarAtendimento(pergunta, r) {
+  if (r.tipo !== 'faq' || !sb) return;
+  try {
+    const { data: { user } } = await sb.auth.getUser();
+    if (!user) return;
+    await sb.from('atendimentos').insert({
+      user_id: user.id,
+      matricula: currentUser?.matricula || null,
+      pergunta,
+      categoria: r.categoria,
+      encontrou: r.encontrou
+    });
+  } catch (_) { /* silencioso: registro não deve atrapalhar o chat */ }
 }
 
 // ── SISTEMA PROMPT gerenciado pelo backend (api/chat.js) ─────────────────
@@ -616,12 +637,13 @@ async function sendMessage(text) {
   showTyping();
 
   await faqReady;                 // garante que a base já carregou
-  const resposta = responder(text);
+  const r = responder(text);
+  registrarAtendimento(text, r);  // registro em segundo plano
 
   // Pequeno atraso só para dar naturalidade ao "digitando…".
   setTimeout(() => {
     removeTyping();
-    addBotMsg(resposta);
+    addBotMsg(r.texto);
     sendBtn.disabled = false;
     inputEl.focus();
   }, 350);
