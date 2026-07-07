@@ -349,7 +349,7 @@ Após a entrega e validação dos documentos, se o colaborador atender aos crit�
 ──────────────────────────────────────────────────────
 
 P: Como acesso meu contracheque?
-O colaborador recebe um e-mail com as informações de acesso. Caso ainda não tenha cadastro, será necessário realizar o cadastro no aplicativo para consultar o contracheque.
+R: O colaborador recebe um e-mail com as informações de acesso. Caso ainda não tenha cadastro, será necessário realizar o cadastro no aplicativo para consultar o contracheque.
 Se houver dificuldade de acesso ou algum imprevisto, o colaborador pode procurar o Departamento Pessoal para suporte.
 Em situações específicas, o DP poderá enviar o contracheque pelo WhatsApp do colaborador cadastrado.
 

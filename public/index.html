@@ -397,6 +397,7 @@ const STOPWORDS = new Set('a o as os um uma de da do das dos e ou que como para 
 // Apelidos/siglas → palavras da base, para melhorar o reconhecimento.
 const SINONIMOS = {
   vt: ['vale','transporte'], va: ['vale','alimentacao'], vr: ['vale','refeicao'],
+  data: ['dia'],
   holerite: ['contracheque'], demonstrativo: ['contracheque'],
   aso: ['exame','ocupacional'], inss: ['afastamento','inss','beneficio'],
   pgto: ['pagamento'], salario: ['salario','pagamento'],
@@ -427,7 +428,8 @@ const faqReady = fetch('/api/faq')
   .then(d => {
     FAQ = d.pares.map(p => ({
       ...p,
-      tokensPergunta: new Set(tokens(p.pergunta + ' ' + (p.categoria || ''))),
+      tokensPergunta: new Set(tokens(p.pergunta)),
+      tokensCategoria: new Set(tokens(p.categoria || '')),
       tokensResposta: new Set(tokens(p.resposta))
     }));
   })
@@ -453,12 +455,18 @@ function responder(pergunta) {
 
   let melhor = null, melhorForca = 0, melhorAcertosP = 0;
   for (const item of FAQ) {
-    let acertosP = 0, acertosR = 0;
+    let acertosP = 0, acertosC = 0, acertosR = 0;
     for (const t of q) {
-      if (item.tokensPergunta.has(t)) acertosP++;
-      else if (item.tokensResposta.has(t)) acertosR++;   // resposta vale menos
+      if (item.tokensPergunta.has(t)) acertosP++;        // pergunta: peso cheio
+      else if (item.tokensCategoria.has(t)) acertosC++;  // categoria: peso médio
+      else if (item.tokensResposta.has(t)) acertosR++;   // resposta: peso menor
     }
-    const forca = acertosP + acertosR * 0.5 + (acertosP + acertosR) / q.length * 0.1;
+    // Cobertura: o quanto da pergunta do FAQ foi coberta pela dúvida.
+    // Penaliza perguntas muito específicas (ex.: 13º salário) quando a
+    // dúvida não menciona os termos específicos delas.
+    const coberturaP = acertosP / Math.max(1, item.tokensPergunta.size);
+    const forca = acertosP + acertosC * 0.6 + acertosR * 0.5 + coberturaP * 0.8
+                + (acertosP + acertosC + acertosR) / q.length * 0.1;
     if (forca > melhorForca) { melhorForca = forca; melhorAcertosP = acertosP; melhor = item; }
   }
 
