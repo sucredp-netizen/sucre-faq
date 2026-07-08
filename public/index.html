@@ -488,8 +488,10 @@ function responder(pergunta) {
   }
 
   if (ehEncerramento(pergunta)) {
+    const agradeceu = /\b(obrigad|obg|obgada|vlw|valeu|agradec)/.test(normalizar(pergunta).join(' '));
     return { tipo: 'encerramento', encontrou: true, categoria: null,
-      texto: 'Imagina, fico feliz em ajudar! 😊 Se precisar de mais alguma coisa, é só chamar. Tenha um ótimo dia!' };
+      texto: (agradeceu ? 'De nada! 😊' : 'Perfeito! 😊') +
+        ' Fico à disposição — se tiver outra dúvida, é só perguntar.' };
   }
 
   const q = [...new Set(tokens(pergunta))];
