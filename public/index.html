@@ -456,6 +456,25 @@ function ehSaudacao(texto) {
   return /^(oi|ola|opa|bom dia|boa tarde|boa noite|tudo bem|ei)\b/.test(t) && t.length < 20;
 }
 
+// Agradecimentos / encerramentos ("obrigada", "entendi", "valeu", "ok").
+const AGRADECIMENTOS = new Set(('obrigado obrigada obg obgada vlw valeu agradecido agradecida ' +
+  'entendi entendido entendeu compreendi show perfeito beleza blz otimo otima ' +
+  'ok okay okey tranquilo tranquila isso era nada mais bom demais massa top ' +
+  'muito mto mesmo tudo entao certo claro legal joia ta aew').split(/\s+/));
+
+function ehEncerramento(texto) {
+  const palavras = normalizar(texto);
+  if (!palavras.length || palavras.length > 6) return false;
+  // Só é encerramento se pelo menos uma palavra for de agradecimento e
+  // nenhuma palavra restante tiver conteúdo real (fora stopwords/agradecimentos).
+  let temAgradecimento = false, temConteudo = false;
+  for (const p of palavras) {
+    if (AGRADECIMENTOS.has(p)) temAgradecimento = true;
+    else if (!STOPWORDS.has(p)) temConteudo = true;
+  }
+  return temAgradecimento && !temConteudo;
+}
+
 function semResposta() {
   return 'Não encontrei essa informação na minha base de conhecimento. Tente reformular a pergunta com outras palavras, ou fale diretamente com o Departamento Pessoal: ' + CONTATO_DP;
 }
@@ -466,6 +485,11 @@ function responder(pergunta) {
   if (ehSaudacao(pergunta)) {
     return { tipo: 'saudacao', encontrou: true, categoria: null,
       texto: 'Oi! 😊 Como posso te ajudar? Você pode perguntar sobre salário, vale transporte, vale alimentação, ponto, férias, licenças, plano de saúde e muito mais — é só escolher um atalho ou escrever sua dúvida.' };
+  }
+
+  if (ehEncerramento(pergunta)) {
+    return { tipo: 'encerramento', encontrou: true, categoria: null,
+      texto: 'Imagina, fico feliz em ajudar! 😊 Se precisar de mais alguma coisa, é só chamar. Tenha um ótimo dia!' };
   }
 
   const q = [...new Set(tokens(pergunta))];
