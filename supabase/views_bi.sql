@@ -6,7 +6,7 @@
 -- ============================================================
 
 -- Base detalhada — uma linha por atendimento, já enriquecida com
--- colunas de data (fuso America/Fortaleza) prontas para segmentar.
+-- colunas de data (fuso America/Sao_Paulo) prontas para segmentar.
 create or replace view public.vw_atendimentos as
 select
   a.id,
@@ -15,12 +15,12 @@ select
   coalesce(a.categoria, '(sem resposta)')      as categoria,
   a.encontrou,
   a.created_at,
-  (a.created_at at time zone 'America/Fortaleza')            as data_hora_local,
-  (a.created_at at time zone 'America/Fortaleza')::date      as dia,
-  date_trunc('week',  a.created_at at time zone 'America/Fortaleza')::date as semana,
-  date_trunc('month', a.created_at at time zone 'America/Fortaleza')::date as mes,
-  extract(hour from a.created_at at time zone 'America/Fortaleza')::int    as hora,
-  trim(to_char(a.created_at at time zone 'America/Fortaleza', 'TMDay'))    as dia_semana
+  (a.created_at at time zone 'America/Sao_Paulo')            as data_hora_local,
+  (a.created_at at time zone 'America/Sao_Paulo')::date      as dia,
+  date_trunc('week',  a.created_at at time zone 'America/Sao_Paulo')::date as semana,
+  date_trunc('month', a.created_at at time zone 'America/Sao_Paulo')::date as mes,
+  extract(hour from (a.created_at at time zone 'America/Sao_Paulo'))::int    as hora,
+  trim(to_char(a.created_at at time zone 'America/Sao_Paulo', 'TMDay'))    as dia_semana
 from public.atendimentos a;
 
 -- ============================================================
