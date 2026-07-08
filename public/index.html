@@ -252,6 +252,22 @@
       border-color: var(--red); color: var(--red);
       background: rgba(250,36,88,.05);
     }
+    .opt-list {
+      display: flex; flex-direction: column;
+      gap: 8px; margin-top: 12px;
+    }
+    .opt-btn {
+      text-align: left;
+      border: 1.5px solid var(--border);
+      background: var(--white); color: var(--dark);
+      border-radius: 12px; padding: 9px 13px;
+      font-size: 13px; line-height: 1.35; cursor: pointer;
+      transition: all .15s;
+    }
+    .opt-btn:hover {
+      border-color: var(--red); color: var(--red);
+      background: rgba(250,36,88,.05);
+    }
 
     /* ── INPUT ── */
     form {
@@ -455,7 +471,7 @@ function responder(pergunta) {
   const q = [...new Set(tokens(pergunta))];
   if (!q.length || !FAQ.length) return { tipo: 'faq', encontrou: false, categoria: null, texto: semResposta() };
 
-  let melhor = null, melhorForca = 0, melhorAcertosP = 0;
+  const candidatos = [];
   for (const item of FAQ) {
     let acertosP = 0, acertosC = 0, acertosR = 0;
     for (const t of q) {
@@ -463,19 +479,40 @@ function responder(pergunta) {
       else if (item.tokensCategoria.has(t)) acertosC++;  // categoria: peso médio
       else if (item.tokensResposta.has(t)) acertosR++;   // resposta: peso menor
     }
+    if (acertosP + acertosC + acertosR === 0) continue;
     // Cobertura: o quanto da pergunta do FAQ foi coberta pela dúvida.
     // Penaliza perguntas muito específicas (ex.: 13º salário) quando a
     // dúvida não menciona os termos específicos delas.
     const coberturaP = acertosP / Math.max(1, item.tokensPergunta.size);
     const forca = acertosP + acertosC * 0.6 + acertosR * 0.5 + coberturaP * 0.8
                 + (acertosP + acertosC + acertosR) / q.length * 0.1;
-    if (forca > melhorForca) { melhorForca = forca; melhorAcertosP = acertosP; melhor = item; }
+    candidatos.push({ item, acertosP, forca });
+  }
+  candidatos.sort((a, b) => b.forca - a.forca);
+
+  const melhor = candidatos[0] || null;
+  const melhorForca = melhor ? melhor.forca : 0;
+  const melhorAcertosP = melhor ? melhor.acertosP : 0;
+
+  // Dúvida genérica (só o tema, ex.: "e as férias?"): quando a consulta é
+  // curta e há vários itens empatados batendo na pergunta, oferece as
+  // opções em vez de chutar uma resposta específica.
+  if (q.length <= 2) {
+    const empatados = candidatos.filter(c => c.acertosP >= 1);
+    const dominante = empatados.length >= 2 && (empatados[0].forca - empatados[1].forca) >= 1;
+    if (empatados.length >= 2 && !dominante) {
+      return {
+        tipo: 'opcoes', encontrou: true, categoria: empatados[0].item.categoria,
+        texto: 'Sobre esse assunto, posso te ajudar com uma destas dúvidas. Toque na que você quer saber:',
+        opcoes: empatados.slice(0, 6).map(c => c.item.pergunta)
+      };
+    }
   }
 
   // Aceita quando há força suficiente, ou quando bate a pergunta numa consulta curta.
   const bomMatch = melhorForca >= 2 || (melhorAcertosP >= 1 && q.length <= 2);
   if (melhor && bomMatch) {
-    return { tipo: 'faq', encontrou: true, categoria: melhor.categoria, texto: melhor.resposta };
+    return { tipo: 'faq', encontrou: true, categoria: melhor.item.categoria, texto: melhor.item.resposta };
   }
   return { tipo: 'faq', encontrou: false, categoria: null, texto: semResposta() };
 }
@@ -596,6 +633,21 @@ function addBotMsg(text) {
   scroll();
 }
 
+// Mensagem da Ana com opções clicáveis (desambiguação de temas genéricos).
+function addBotOptions(text, opcoes) {
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  const botoes = opcoes.map(op =>
+    `<button type="button" class="opt-btn" data-q="${esc(op)}">${esc(op)}</button>`
+  ).join('');
+  div.innerHTML = `<div class="msg-avatar">A</div><div class="bubble">${esc(text)}<div class="opt-list">${botoes}</div></div>`;
+  div.querySelectorAll('.opt-btn').forEach(b =>
+    b.addEventListener('click', () => sendMessage(b.dataset.q))
+  );
+  chat.appendChild(div);
+  scroll();
+}
+
 function addUserMsg(text) {
   const div = document.createElement('div');
   div.className = 'msg user';
@@ -643,7 +695,8 @@ async function sendMessage(text) {
   // Pequeno atraso só para dar naturalidade ao "digitando…".
   setTimeout(() => {
     removeTyping();
-    addBotMsg(r.texto);
+    if (r.tipo === 'opcoes') addBotOptions(r.texto, r.opcoes);
+    else addBotMsg(r.texto);
     sendBtn.disabled = false;
     inputEl.focus();
   }, 350);
