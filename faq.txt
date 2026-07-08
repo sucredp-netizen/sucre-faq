@@ -1,4 +1,3 @@
-
 ========================================================
   FAQ – DÚVIDAS FREQUENTES DOS COLABORADORES
   Sucré Alimentos – Departamento Pessoal
@@ -58,7 +57,7 @@ O cartão permanece com o colaborador, mas novos créditos deixam de ser realiza
 
 P: Quando cai o salário?
 R: O pagamento é realizado em duas etapas:
-Adiantamento salarial: corresponde a 40% do salário e é pago no dia 20 de cada mês. Quando o dia 20 não for dia útil, o pagamento será realizado no dia útil imediatamente anterior.
+Adiantamento salarial: corresponde a 40% do salário e é pago no dia 20 de cada mês. Quando essa data coincidir com sábado, domingo, feriado ou dia sem expediente bancário, o pagamento poderá ser ajustado para o dia útil mais próximo, conforme calendário financeiro da empresa
 Pagamento do saldo: corresponde aos 60% restantes e é pago até o 5º dia útil do mês seguinte, conforme prazo previsto na CLT.
 O pagamento é realizado via Banco do Brasil, em conta salário.
 
@@ -90,6 +89,33 @@ Caso tenha dúvida, procure o Departamento Pessoal para conferência, informando
 P: O adicional de insalubridade aparece na folha de pagamento?
 R: Sim, quando aplicável. O adicional de insalubridade é lançado na folha de pagamento conforme avaliação técnica, função exercida, exposição ao risco e regras legais aplicáveis.
 Em caso de dúvida sobre o recebimento ou valor lançado, o colaborador deve procurar o Departamento Pessoal para conferência.
+
+P:Por que tive desconto no meu adiantamento salarial?
+
+R: Quando o colaborador possui empréstimo consignado ativo, pode aparecer um desconto no adiantamento salarial chamado provisão de desconto.
+A provisão funciona como uma “reserva” feita pela empresa para garantir que, no fechamento da folha mensal, o valor da parcela do empréstimo consignado consiga ser descontado corretamente.
+Isso acontece porque o empréstimo consignado é um compromisso contratado pelo próprio colaborador com a instituição financeira, e o desconto da parcela é feito diretamente na folha de pagamento.
+
+Na prática, funciona assim:
+
+Exemplo:
+Se o colaborador tem uma parcela de empréstimo consignado para ser descontada no mês, a empresa pode reservar uma parte desse valor já no adiantamento. Assim, quando a folha fechar, o desconto será concluído corretamente, sem comprometer o pagamento final.
+
+Esse desconto não é uma cobrança extra. É apenas uma antecipação/reserva do valor que já precisa ser descontado na folha do mês.
+
+Em caso de dúvidas sobre o valor descontado, o colaborador pode procurar o Departamento Pessoal para conferência.
+
+P:Posso pedir para não descontar a provisão do empréstimo consignado no adiantamento salarial?
+
+R:Não. Quando o colaborador possui empréstimo consignado ativo, a provisão do desconto no adiantamento salarial segue uma regra definida no manual de empréstimos consignados.
+
+Essa provisão é feita para garantir que, no fechamento da folha de pagamento, exista saldo suficiente para descontar corretamente a parcela do empréstimo.
+
+Por isso, não é possível solicitar a retirada desse desconto apenas do adiantamento. O desconto faz parte da rotina de controle da folha para colaboradores que possuem consignado ativo.
+
+Importante reforçar que a provisão não é uma cobrança extra. Ela é uma reserva antecipada de um valor que já será considerado no fechamento da folha mensal.
+
+Em caso de dúvidas sobre o valor provisionado, o colaborador pode procurar o Departamento Pessoal para conferência.
 
 
 ──────────────────────────────────────────────────────
